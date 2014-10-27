@@ -1,6 +1,6 @@
 package com.ioopm;
 
-public class RoomConnection {
+public class Door {
     private Room room;
     private boolean locked;
 }
