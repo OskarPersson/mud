@@ -50,6 +50,8 @@ public class Main{
 
     public static void main(String[] args){
 		Main main = new Main();
-		main.gameLoop();
+        World world = new World("res/world.txt");
+        System.out.println(world);
+        main.gameLoop();
     }
 }
