@@ -2,7 +2,7 @@ package com.ioopm;
 import java.util.Scanner;
 
 public class Main{
-	
+
 	private Scanner scanner = new Scanner(System.in);
 	private String currentInput;
 	private Command command;
@@ -13,7 +13,7 @@ public class Main{
 	}
 
 	private Main(){
-		
+
 	}
 
 	private void update(){
@@ -21,7 +21,7 @@ public class Main{
 		case GO:
 			System.out.println("go somewhere");
 			break;
-		default: 
+		default:
 			break;
 		}
 	}
@@ -42,7 +42,7 @@ public class Main{
 			getInput();
 		}
 	}
-	
+
 	private void gameLoop(){
 		getInput();
 		update();
