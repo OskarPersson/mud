@@ -105,7 +105,7 @@ public class World {
                 String[] explodedString = line.split(";", 3);
                 Book courseBook = findBook(explodedString[1]);
                 if (courseBook != null) {
-                    Course course = new Course(explodedString[0], findBook(explodedString[1]),
+                    Course course = new Course(explodedString[0], courseBook),
                             Integer.parseInt(explodedString[2]));
                     ranIdx = ran.nextInt(teachers.size());
                     teachers.get(ranIdx).setCourse(course);
