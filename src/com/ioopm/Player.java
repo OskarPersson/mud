@@ -8,4 +8,8 @@ public class Player extends Person {
     private ArrayList<Course> unfinishedCourses;
     private int hp;
 
+    public Player(String name){
+        super(name);
+        hp = 60;
+    }
 }
