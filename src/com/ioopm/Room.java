@@ -17,6 +17,7 @@ public class Room {
     public Room(String name){
         this.name = name;
         books = new ArrayList<Book>();
+        teachers = new ArrayList<Teacher>();
     }
 
     public void setDoors(Door north, Door east, Door south, Door west){
@@ -28,6 +29,10 @@ public class Room {
 
     public void addBook(Book book){
         books.add(book);
+    }
+
+    public void addTeacher(Teacher teacher){
+        teachers.add(teacher);
     }
 
     public String getName(){
@@ -45,6 +50,11 @@ public class Room {
         for(Book b : books){
             bookString += b.toString() + "\n";
         }
-        return roomDesc + bookString;
+
+        String teacherString = "\nTeachers: \n";
+        for(Teacher t : teachers){
+            teacherString += t.toString() + "\n";
+        }
+        return roomDesc + bookString + teacherString;
     }
 }

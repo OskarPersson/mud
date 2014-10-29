@@ -7,13 +7,21 @@ import java.util.Random;
 
 public class World {
     private ArrayList<Room> rooms;
+    private ArrayList<Teacher> teachers;
+    private ArrayList<Book> books;
+    private ArrayList<Course> courses;
 
-    public World(String roomFilename, String bookFilename){
+    public World(String roomFilename, String bookFilename, String courseFilename){
 
         rooms = new ArrayList<Room>();
+        teachers = new ArrayList<Teacher>();
+        books = new ArrayList<Book>();
+        courses = new ArrayList<Course>();
 
         BufferedReader buffer;
         String line;
+        Random ran = new Random();
+        int ranIdx;
 
         //Create rooms
         try (InputStream inputStream = new FileInputStream(roomFilename)){
@@ -54,6 +62,17 @@ public class World {
             e.printStackTrace();
         }
 
+        //Create teachers
+        Teacher teacherOne = new Teacher("Oskar");
+        Teacher teacherTwo = new Teacher("Stackel");
+        teachers.add(teacherOne);
+        teachers.add(teacherTwo);
+
+        for (Teacher teacher : teachers){
+            ranIdx = ran.nextInt(rooms.size());
+            rooms.get(ranIdx).addTeacher(teacher);
+        }
+
         //Create books
         try (InputStream inputStream = new FileInputStream(bookFilename)){
 
@@ -63,9 +82,9 @@ public class World {
                 Book book = new Book(   explodedString[0], explodedString[1],
                                         Integer.parseInt(explodedString[2]),
                                         Integer.parseInt(explodedString[3]));
-                Random ran = new Random();
-                int roomIdx = ran.nextInt(rooms.size());
-                rooms.get(roomIdx).addBook(book);
+                ranIdx = ran.nextInt(rooms.size());
+                rooms.get(ranIdx).addBook(book);
+                books.add(book);
             }
 
             // Done with the file
@@ -78,12 +97,47 @@ public class World {
             e.printStackTrace();
         }
 
+        //Create courses
+        try (InputStream inputStream = new FileInputStream(courseFilename)){
+
+            buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+            while ((line = buffer.readLine()) != null) {
+                String[] explodedString = line.split(";", 3);
+                Book courseBook = findBook(explodedString[1]);
+                if (courseBook != null) {
+                    Course course = new Course(explodedString[0], findBook(explodedString[1]),
+                            Integer.parseInt(explodedString[2]));
+                    ranIdx = ran.nextInt(teachers.size());
+                    teachers.get(ranIdx).setCourse(course);
+                    teachers.remove(ranIdx);
+                    courses.add(course);
+                }
+            }
+
+            // Done with the file
+            buffer.close();
+            inputStream.close();
+
+        } catch (FileNotFoundException e){
+            System.out.println(bookFilename + " not found!");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public Room findRoom(String name){
         for (Room room : rooms){
             if (room.getName().equals(name)){
                 return room;
+            }
+        }
+        return null;
+    }
+
+    public Book findBook(String name){
+        for (Book book : books){
+            if (book.getName().equals(name)){
+                return book;
             }
         }
         return null;

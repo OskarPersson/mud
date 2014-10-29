@@ -12,6 +12,10 @@ public class Book extends Item{
         this.year = year;
     }
 
+    public String getName(){
+        return name;
+    }
+
     public String toString(){
         return "Title: " + name + "\nYear: " + year + "\nAuthor: " + author + "\nSpace: " + getSpace() + "\n";
     }
