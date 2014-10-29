@@ -3,18 +3,20 @@ package com.ioopm;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class World {
     private ArrayList<Room> rooms;
 
-    public World(String filename){
+    public World(String roomFilename, String bookFilename){
 
         rooms = new ArrayList<Room>();
 
         BufferedReader buffer;
         String line;
 
-        try (InputStream inputStream = new FileInputStream(filename)){
+        //Create rooms
+        try (InputStream inputStream = new FileInputStream(roomFilename)){
 
             buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
             ArrayList<String[]> roomStrings = new ArrayList<String[]>();
@@ -47,7 +49,31 @@ public class World {
             }
 
         } catch (FileNotFoundException e){
-            System.out.println("File not found!");
+            System.out.println(roomFilename + " not found!");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        //Create books
+        try (InputStream inputStream = new FileInputStream(bookFilename)){
+
+            buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+            while ((line = buffer.readLine()) != null) {
+                String[] explodedString = line.split(";", 4);
+                Book book = new Book(   explodedString[0], explodedString[1],
+                                        Integer.parseInt(explodedString[2]),
+                                        Integer.parseInt(explodedString[3]));
+                Random ran = new Random();
+                int roomIdx = ran.nextInt(rooms.size());
+                rooms.get(roomIdx).addBook(book);
+            }
+
+            // Done with the file
+            buffer.close();
+            inputStream.close();
+
+        } catch (FileNotFoundException e){
+            System.out.println(bookFilename + " not found!");
         } catch (IOException e){
             e.printStackTrace();
         }

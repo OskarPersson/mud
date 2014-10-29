@@ -50,7 +50,7 @@ public class Main{
 
     public static void main(String[] args){
         Main main = new Main();
-        World world = new World("res/world.txt");
+        World world = new World("res/world.txt", "res/books.txt");
         System.out.println(world);
         main.gameLoop();
     }

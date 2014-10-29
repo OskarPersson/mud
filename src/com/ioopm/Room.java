@@ -16,6 +16,7 @@ public class Room {
 
     public Room(String name){
         this.name = name;
+        books = new ArrayList<Book>();
     }
 
     public void setDoors(Door north, Door east, Door south, Door west){
@@ -25,15 +26,25 @@ public class Room {
         this.WEST = west;
     }
 
+    public void addBook(Book book){
+        books.add(book);
+    }
+
     public String getName(){
         return this.name;
     }
 
     public String toString(){
-        return this.name +
+        String roomDesc = this.name +
                 "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.getRoom().getName()  + " Locked: " + NORTH.getLocked()) +
                 "\nEAST: "  + ((EAST  == null) ? "X" : EAST.getRoom().getName()  + " Locked: " + EAST.getLocked()) +
                 "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.getRoom().getName() + " Locked: " + SOUTH.getLocked()) +
-                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.getRoom().getName()  + " Locked: " + WEST.getLocked());
+                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.getRoom().getName()  + " Locked: " + WEST.getLocked()) + "\n";
+
+        String bookString = "\nBooks: \n";
+        for(Book b : books){
+            bookString += b.toString() + "\n";
+        }
+        return roomDesc + bookString;
     }
 }
