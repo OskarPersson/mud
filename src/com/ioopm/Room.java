@@ -31,9 +31,9 @@ public class Room {
 
     public String toString(){
         return this.name +
-                "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.getRoom().getName()) +
-                "\nEAST: "  + ((EAST  == null) ? "X" : EAST.getRoom().getName()) +
-                "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.getRoom().getName()) +
-                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.getRoom().getName());
+                "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.getRoom().getName()  + " Locked: " + NORTH.getLocked()) +
+                "\nEAST: "  + ((EAST  == null) ? "X" : EAST.getRoom().getName()  + " Locked: " + EAST.getLocked()) +
+                "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.getRoom().getName() + " Locked: " + SOUTH.getLocked()) +
+                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.getRoom().getName()  + " Locked: " + WEST.getLocked());
     }
 }

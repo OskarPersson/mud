@@ -12,4 +12,7 @@ public class Door {
     public Room getRoom(){
         return this.room;
     }
+    public boolean getLocked(){
+        return this.locked;
+    }
 }
