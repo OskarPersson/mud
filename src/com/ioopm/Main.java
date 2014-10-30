@@ -21,7 +21,20 @@ public class Main{
         }else if (currentInput.substring(0, 9).equals("inventory")){
             System.out.println(player.getInventory());
         }else if (currentInput.substring(0, 7).equals("pick up")){
-            player.pickup(world.findBook(currentInput.substring(8)));
+           String rest = currentInput.substring(8);
+            if (rest.equals("key")){
+                player.pickup(player.getRoom().getKey());
+            }else{
+                player.pickup(world.findBook(rest));
+            }
+        }else if (currentInput.substring(0, 13).equals("use key with ")){
+            String rest = currentInput.substring(13);
+            if (!(rest.equals("north") || rest.equals("south") || rest.equals("east") || rest.equals("west"))) {
+                System.out.println("Incorrect input, try again");
+                getInput();
+            } else {
+                player.unlock(rest);
+            }
         }else if (currentInput.substring(0, 4).equals("quit")){
             running = false;
         }else{
