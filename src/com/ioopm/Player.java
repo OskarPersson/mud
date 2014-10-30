@@ -27,13 +27,27 @@ public class Player extends Person {
         }else{
             System.out.println("Finns ingen dörr här");
         }
+    }
 
+    public void pickup(Item item){
+        inventory.addItem(item);
     }
 
     public void setRoom(Room room){
-        this.currentRoom = room;
+        if (room != null) {
+            this.currentRoom = room;
+        }else{
+            System.out.println("Du måste vara i ett rum");
+        }
     }
+
     public Room getRoom(){
         return currentRoom;
     }
+
+    public Inventory getInventory(){
+        return inventory;
+    }
+
+
 }

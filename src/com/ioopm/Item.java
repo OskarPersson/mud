@@ -1,6 +1,6 @@
 package com.ioopm;
 
-public class Item {
+public abstract class Item {
     private int inventorySpace;
 
     public Item(int space){

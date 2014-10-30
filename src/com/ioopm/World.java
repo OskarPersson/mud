@@ -119,7 +119,7 @@ public class World {
             inputStream.close();
 
         } catch (FileNotFoundException e){
-            System.out.println(bookFilename + " not found!");
+            System.out.println(courseFilename + " not found!");
         } catch (IOException e){
             e.printStackTrace();
         }

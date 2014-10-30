@@ -18,6 +18,10 @@ public class Main{
             } else {
                 player.go(rest);
             }
+        }else if (currentInput.substring(0, 9).equals("inventory")){
+            System.out.println(player.getInventory());
+        }else if (currentInput.substring(0, 7).equals("pick up")){
+            player.pickup(world.findBook(currentInput.substring(8)));
         }else if (currentInput.substring(0, 4).equals("quit")){
             running = false;
         }else{
@@ -33,7 +37,7 @@ public class Main{
         scanner.close();
     }
 
-    public void init(){
+    private Main(){
         world  = new World("res/world.txt", "res/books.txt", "res/courses.txt");
         player = new Player("PLAYER");
         player.setRoom(world.randRoom());
@@ -42,7 +46,6 @@ public class Main{
 
     public static void main(String[] args){
         Main main = new Main();
-        main.init();
         main.gameLoop();
     }
 }

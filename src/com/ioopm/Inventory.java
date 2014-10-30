@@ -26,4 +26,16 @@ public class Inventory {
             capacity -= item.getSpace();
         }
     }
+
+    public String toString(){
+        String result = "\n";
+        if (items.size() != 0) {
+            for (Item item : items) {
+                result = result.concat(item.toString() + "\n");
+            }
+        }else{
+            return "Inventory is empty";
+        }
+        return result;
+    }
 }
