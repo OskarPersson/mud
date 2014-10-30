@@ -39,6 +39,21 @@ public class Room {
         return this.name;
     }
 
+    public Door getDoor(String direction){
+        switch(direction.toLowerCase()){
+            case "north":
+                return NORTH;
+            case "east":
+                return EAST;
+            case "south":
+                return SOUTH;
+            case "west":
+                return WEST;
+            default:
+                return null;
+        }
+    }
+
     public String toString(){
         String roomDesc = this.name +
                 "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.getRoom().getName()  + " Locked: " + NORTH.getLocked()) +

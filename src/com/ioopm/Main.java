@@ -3,36 +3,23 @@ import java.util.Scanner;
 
 public class Main{
     private Scanner scanner = new Scanner(System.in);
-    private Command command;
     private World world;
     private Player player;
-
-    private enum Command {
-        GO, PICKUP, USEKEYWITH, DROP, INVENTORY,
-        ENROLL, TALK, GRADUATE, TRADE;
-    }
-
-    private void update(){
-        switch (command){
-        case GO:
-            System.out.println("go somewhere");
-            break;
-        default:
-            break;
-        }
-    }
+    private boolean running = true;
 
     private void getInput(){
         System.out.println("Enter command: ");
         String currentInput = scanner.nextLine().toLowerCase();
-        if (currentInput.substring(0, 3).equals("go ")){
+        if (currentInput.substring(0, 3).equals("go ")) {
             String rest = currentInput.substring(3);
-            if (!(rest.equals("north") || rest.equals("south") || rest.equals("east") || rest.equals("west"))){
+            if (!(rest.equals("north") || rest.equals("south") || rest.equals("east") || rest.equals("west"))) {
                 System.out.println("Incorrect input, try again");
                 getInput();
-            }else{
-                command = Command.GO;
+            } else {
+                player.go(rest);
             }
+        }else if (currentInput.substring(0, 4).equals("quit")){
+            running = false;
         }else{
             System.out.println("Incorrect input, try again");
             getInput();
@@ -40,8 +27,10 @@ public class Main{
     }
 
     private void gameLoop(){
-        getInput();
-        update();
+        while(running) {
+            getInput();
+        }
+        scanner.close();
     }
 
     public void init(){
