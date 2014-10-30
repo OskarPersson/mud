@@ -9,6 +9,7 @@ public class World {
     private ArrayList<Room> rooms;
     private ArrayList<Teacher> teachers;
     private ArrayList<Book> books;
+    private ArrayList<Key> keys;
     private ArrayList<Course> courses;
     private Random ran;
 
@@ -16,6 +17,7 @@ public class World {
         rooms    = new ArrayList<Room>();
         teachers = new ArrayList<Teacher>();
         books    = new ArrayList<Book>();
+        keys = new ArrayList<Key>();
         courses  = new ArrayList<Course>();
         ran      = new Random();
 
@@ -125,16 +127,36 @@ public class World {
             inputStream.close();
 
             int i = 0;
+            int keyCounter = 0;
             for (Room room : rooms){
                 Room northRoom  = findRoom(roomStrings.get(i)[1]);
                 Room eastRoom   = findRoom(roomStrings.get(i)[2]);
                 Room southRoom  = findRoom(roomStrings.get(i)[3]);
                 Room westRoom   = findRoom(roomStrings.get(i)[4]);
 
-                Door north = northRoom == null ? null : new Door(northRoom, Boolean.valueOf(roomStrings.get(i)[5]));
-                Door east = eastRoom == null ? null :new Door(eastRoom, Boolean.valueOf(roomStrings.get(i)[6]));
-                Door south = southRoom == null ? null :new Door(southRoom, Boolean.valueOf(roomStrings.get(i)[7]));
-                Door west = westRoom == null ? null :new Door(westRoom, Boolean.valueOf(roomStrings.get(i)[8]));
+                boolean northLocked = roomStrings.get(i)[5].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[5]);
+                boolean eastLocked = roomStrings.get(i)[6].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[6]);
+                boolean southLocked = roomStrings.get(i)[7].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[7]);
+                boolean westLocked = roomStrings.get(i)[8].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[8]);
+
+                Door north = northRoom == null ? null : new Door(northRoom, northLocked);
+                Door east = eastRoom == null ? null :new Door(eastRoom, eastLocked);
+                Door south = southRoom == null ? null :new Door(southRoom, southLocked);
+                Door west = westRoom == null ? null :new Door(westRoom, westLocked);
+
+                if (northLocked){
+                    keyCounter++;
+                }
+                if (eastLocked){
+                    keyCounter++;
+                }
+                if (southLocked){
+                    keyCounter++;
+                }
+                if (westLocked){
+                    keyCounter++;
+                }
+
 
                 room.setDoors(north, east, south, west);
                 i++;
