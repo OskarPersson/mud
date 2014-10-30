@@ -29,8 +29,20 @@ public class Player extends Person {
         }
     }
 
+    public void unlock(String direction){
+        if (currentRoom.getDoor(direction) != null){
+            if (inventory.useKey()) {
+                currentRoom.getDoor(direction).unlock();
+            }
+        }else{
+            System.out.println("Finns ingen dörr här");
+        }
+    }
+
     public void pickup(Item item){
-        inventory.addItem(item);
+        if (item != null) {
+            inventory.addItem(item);
+        }
     }
 
     public void setRoom(Room room){

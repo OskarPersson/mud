@@ -17,6 +17,7 @@ public class Room {
     public Room(String name){
         this.name = name;
         books = new ArrayList<Book>();
+        keys = new ArrayList<Key>();
         teachers = new ArrayList<Teacher>();
     }
 
@@ -54,6 +55,21 @@ public class Room {
         }
     }
 
+    public void addKey(Key key){
+        keys.add(key);
+    }
+
+    public Key getKey(){
+        if (keys.size() > 0){
+            Key key = keys.get(0);
+            keys.remove(key);
+            return key;
+        }else{
+            System.out.println("No keys in this room");
+            return null;
+        }
+    }
+
     public String toString(){
         String roomDesc = this.name +
                 "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.getRoom().getName()  + " Locked: " + NORTH.getLocked()) +
@@ -61,6 +77,7 @@ public class Room {
                 "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.getRoom().getName() + " Locked: " + SOUTH.getLocked()) +
                 "\nWEST: "  + ((WEST  == null) ? "X" : WEST.getRoom().getName()  + " Locked: " + WEST.getLocked()) + "\n";
 
+        String keyString = "\n# of keys: " + keys.size() + "\n";
         String bookString = "\nBooks: \n";
         for(Book b : books){
             bookString += b.toString() + "\n";
@@ -70,6 +87,6 @@ public class Room {
         for(Teacher t : teachers){
             teacherString += t.toString() + "\n";
         }
-        return roomDesc + bookString + teacherString;
+        return roomDesc + keyString + bookString + teacherString;
     }
 }

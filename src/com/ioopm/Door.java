@@ -15,4 +15,8 @@ public class Door {
     public boolean getLocked(){
         return this.locked;
     }
+
+    public void unlock(){
+        this.locked = false;
+    }
 }

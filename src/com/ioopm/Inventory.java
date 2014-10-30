@@ -26,6 +26,18 @@ public class Inventory {
             capacity -= item.getSpace();
         }
     }
+    
+    public boolean useKey(){
+        for (Item item : items){
+            if (item instanceof Key){
+                System.out.println("Unlocked door");
+                removeItem(item);
+                return true;
+            }
+        }
+        System.out.println("You have no keys");
+        return false;
+    }
 
     public String toString(){
         String result = "\n";
