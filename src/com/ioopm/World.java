@@ -162,6 +162,11 @@ public class World {
                 i++;
             }
 
+            keyCounter = (int)Math.ceil(keyCounter*1.5);
+            for (int j = 0; j <= keyCounter; j++) {
+                rooms.get(ran.nextInt(rooms.size())).addKey(new Key());
+            }
+
         } catch (FileNotFoundException e){
             System.out.println(filepath + " not found!");
         } catch (IOException e){
