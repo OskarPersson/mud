@@ -27,7 +27,6 @@ public class World {
 
         //Create rooms
         try (InputStream inputStream = new FileInputStream(roomFilename)){
-
             buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
             ArrayList<String[]> roomStrings = new ArrayList<String[]>();
             while ((line = buffer.readLine()) != null) {
@@ -90,10 +89,28 @@ public class World {
         }
 
         //Create teachers
-        Teacher teacherOne = new Teacher("Oskar");
-        Teacher teacherTwo = new Teacher("Stackel");
-        teachers.add(teacherOne);
-        teachers.add(teacherTwo);
+
+        ArrayList<String> teacherNames = new ArrayList<String>();
+        try (InputStream inputStream = new FileInputStream("res/names.txt")){
+            buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+
+            while ((line = buffer.readLine()) != null) {
+                teacherNames.add(line);
+            }
+
+        }catch(FileNotFoundException e){
+            System.out.print("File not found!");
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+
+        int n_teachers = 10;
+        for(int i = 0; i <= n_teachers; i++){
+            String randName = teacherNames.get(ran.nextInt(teacherNames.size()));
+            teachers.add(new Teacher(randName));
+        }
 
         for (Teacher teacher : teachers){
             ranIdx = ran.nextInt(rooms.size());
