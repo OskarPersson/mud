@@ -2,18 +2,14 @@ package com.ioopm;
 import java.util.Scanner;
 
 public class Main{
-
     private Scanner scanner = new Scanner(System.in);
-    private String currentInput;
     private Command command;
+    private World world;
+    private Player player;
 
     private enum Command {
         GO, PICKUP, USEKEYWITH, DROP, INVENTORY,
         ENROLL, TALK, GRADUATE, TRADE;
-    }
-
-    private Main(){
-
     }
 
     private void update(){
@@ -28,7 +24,7 @@ public class Main{
 
     private void getInput(){
         System.out.println("Enter command: ");
-        currentInput = scanner.nextLine().toLowerCase();
+        String currentInput = scanner.nextLine().toLowerCase();
         if (currentInput.substring(0, 3).equals("go ")){
             String rest = currentInput.substring(3);
             if (!(rest.equals("north") || rest.equals("south") || rest.equals("east") || rest.equals("west"))){
@@ -48,10 +44,15 @@ public class Main{
         update();
     }
 
+    public void init(){
+        world  = new World("res/world.txt", "res/books.txt", "res/courses.txt");
+        player = new Player("PLAYER");
+        System.out.println(world);
+    }
+
     public static void main(String[] args){
         Main main = new Main();
-        World world = new World("res/world.txt", "res/books.txt", "res/courses.txt");
-        System.out.println(world);
+        main.init();
         main.gameLoop();
     }
 }

@@ -11,4 +11,10 @@ public class Person {
     public String toString(){
         return name;
     }
+    public void setRoom(Room room){
+        this.currentRoom = room;
+    }
+    public Room getRoom(){
+        return currentRoom;
+    }
 }
