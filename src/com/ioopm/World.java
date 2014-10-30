@@ -10,32 +10,117 @@ public class World {
     private ArrayList<Teacher> teachers;
     private ArrayList<Book> books;
     private ArrayList<Course> courses;
+    private Random ran;
 
     public World(String roomFilename, String bookFilename, String courseFilename){
-
-        rooms = new ArrayList<Room>();
+        rooms    = new ArrayList<Room>();
         teachers = new ArrayList<Teacher>();
-        books = new ArrayList<Book>();
-        courses = new ArrayList<Course>();
+        books    = new ArrayList<Book>();
+        courses  = new ArrayList<Course>();
+        ran      = new Random();
 
-        BufferedReader buffer;
-        String line;
-        Random ran = new Random();
-        int ranIdx;
+        initRooms(roomFilename);
+        initTeachers("res/names.txt");
+        initBooks(bookFilename);
 
-        //Create rooms
-        try (InputStream inputStream = new FileInputStream(roomFilename)){
-            buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
-            ArrayList<String[]> roomStrings = new ArrayList<String[]>();
+    }
+
+    private void initCourses(String filepath){
+        try (InputStream inputStream = new FileInputStream(filepath)){
+            BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+            String line;
             while ((line = buffer.readLine()) != null) {
+                String[] explodedString = line.split(";", 3);
+                Book courseBook = findBook(explodedString[1]);
+                if (courseBook != null) {
+                    Course course = new Course(explodedString[0], courseBook,
+                                    Integer.parseInt(explodedString[2]));
+                    int ranIdx = ran.nextInt(teachers.size());
+                    teachers.get(ranIdx).setCourse(course);
+                    teachers.remove(ranIdx);
+                    courses.add(course);
+                }
+            }
 
+            // Done with the file
+            buffer.close();
+            inputStream.close();
+
+        } catch (FileNotFoundException e){
+            System.out.println(filepath + " not found!");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private void initBooks(String filepath){
+        try (InputStream inputStream = new FileInputStream(filepath)){
+            BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+            String line;
+            while ((line = buffer.readLine()) != null) {
+                String[] explodedString = line.split(";", 4);
+                Book book = new Book(   explodedString[0], explodedString[1],
+                        Integer.parseInt(explodedString[2]),
+                        Integer.parseInt(explodedString[3]));
+                int ranIdx = ran.nextInt(rooms.size());
+                rooms.get(ranIdx).addBook(book);
+                books.add(book);
+            }
+
+            // Done with the file
+            buffer.close();
+            inputStream.close();
+
+        } catch (FileNotFoundException e){
+            System.out.println(filepath + " not found!");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void initTeachers(String filepath){
+        ArrayList<String> teacherNames = new ArrayList<String>();
+        try (InputStream inputStream = new FileInputStream("res/names.txt")){
+            BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+            String line;
+            while ((line = buffer.readLine()) != null) {
+                teacherNames.add(line);
+            }
+
+        }catch(FileNotFoundException e){
+            System.out.print("File not found!");
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        int n_teachers = 10;
+        for(int i = 0; i <= n_teachers; i++){
+            String randName = teacherNames.get(ran.nextInt(teacherNames.size()));
+            teachers.add(new Teacher(randName));
+        }
+
+        for (Teacher teacher : teachers){
+            int ranIdx = ran.nextInt(rooms.size());
+            rooms.get(ranIdx).addTeacher(teacher);
+        }
+
+    }
+
+    private void initRooms(String filepath){
+        try (InputStream inputStream = new FileInputStream(filepath)){
+            BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+            ArrayList<String[]> roomStrings = new ArrayList<String[]>();
+            String line;
+            while ((line = buffer.readLine()) != null) {
                 String[] explodedString = line.split("; ", 9);
                 roomStrings.add(explodedString);
                 Room room = new Room(explodedString[0]);
                 rooms.add(room);
             }
 
-            // Done with the file
+            // Close file.
             buffer.close();
             inputStream.close();
 
@@ -56,87 +141,7 @@ public class World {
             }
 
         } catch (FileNotFoundException e){
-            System.out.println(roomFilename + " not found!");
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
-        //Create teachers
-
-        ArrayList<String> teacherNames = new ArrayList<String>();
-        try (InputStream inputStream = new FileInputStream("res/names.txt")){
-            buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
-
-            while ((line = buffer.readLine()) != null) {
-                teacherNames.add(line);
-            }
-
-        }catch(FileNotFoundException e){
-            System.out.print("File not found!");
-
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-
-
-        int n_teachers = 10;
-        for(int i = 0; i <= n_teachers; i++){
-            String randName = teacherNames.get(ran.nextInt(teacherNames.size()));
-            teachers.add(new Teacher(randName));
-        }
-
-        for (Teacher teacher : teachers){
-            ranIdx = ran.nextInt(rooms.size());
-            rooms.get(ranIdx).addTeacher(teacher);
-        }
-
-        //Create books
-        try (InputStream inputStream = new FileInputStream(bookFilename)){
-
-            buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
-            while ((line = buffer.readLine()) != null) {
-                String[] explodedString = line.split(";", 4);
-                Book book = new Book(   explodedString[0], explodedString[1],
-                                        Integer.parseInt(explodedString[2]),
-                                        Integer.parseInt(explodedString[3]));
-                ranIdx = ran.nextInt(rooms.size());
-                rooms.get(ranIdx).addBook(book);
-                books.add(book);
-            }
-
-            // Done with the file
-            buffer.close();
-            inputStream.close();
-
-        } catch (FileNotFoundException e){
-            System.out.println(bookFilename + " not found!");
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
-        //Create courses
-        try (InputStream inputStream = new FileInputStream(courseFilename)){
-
-            buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
-            while ((line = buffer.readLine()) != null) {
-                String[] explodedString = line.split(";", 3);
-                Book courseBook = findBook(explodedString[1]);
-                if (courseBook != null) {
-                    Course course = new Course(explodedString[0], courseBook,
-                            Integer.parseInt(explodedString[2]));
-                    ranIdx = ran.nextInt(teachers.size());
-                    teachers.get(ranIdx).setCourse(course);
-                    teachers.remove(ranIdx);
-                    courses.add(course);
-                }
-            }
-
-            // Done with the file
-            buffer.close();
-            inputStream.close();
-
-        } catch (FileNotFoundException e){
-            System.out.println(courseFilename + " not found!");
+            System.out.println(filepath + " not found!");
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -161,7 +166,6 @@ public class World {
     }
 
     public Room randRoom(){
-        Random ran = new Random();
         return rooms.get(ran.nextInt(rooms.size()));
     }
 
