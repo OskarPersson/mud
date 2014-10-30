@@ -143,6 +143,11 @@ public class World {
         return null;
     }
 
+    public Room randRoom(){
+        Random ran = new Random();
+        return rooms.get(ran.nextInt(rooms.size()));
+    }
+
     public String toString(){
         String result = "";
         for (Room room : rooms) {

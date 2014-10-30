@@ -47,7 +47,8 @@ public class Main{
     public void init(){
         world  = new World("res/world.txt", "res/books.txt", "res/courses.txt");
         player = new Player("PLAYER");
-        System.out.println(world);
+        player.setRoom(world.randRoom());
+        System.out.println("Current room:\n" + player.getRoom());
     }
 
     public static void main(String[] args){
