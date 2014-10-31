@@ -17,13 +17,14 @@ public class World {
         rooms    = new ArrayList<Room>();
         teachers = new ArrayList<Teacher>();
         books    = new ArrayList<Book>();
-        keys = new ArrayList<Key>();
+        keys     = new ArrayList<Key>();
         courses  = new ArrayList<Course>();
         ran      = new Random();
 
         initRooms(roomFilename);
         initTeachers("res/names.txt");
         initBooks(bookFilename);
+        initCourses(courseFilename);
 
     }
 
@@ -185,8 +186,17 @@ public class World {
 
     public Book findBook(String name){
         for (Book book : books){
-            if (book.getName().equals(name)){
+            if (book.getName().toLowerCase().equals(name.toLowerCase())){
                 return book;
+            }
+        }
+        return null;
+    }
+
+    public Course findCourse(String name){
+        for (Course course : courses){
+            if (course.getName().equals(name)){
+                return course;
             }
         }
         return null;

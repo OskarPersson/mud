@@ -10,6 +10,9 @@ public class Teacher extends Person {
     public void setCourse(Course course){
         this.course = course;
     }
+    public Course getCourse(){
+        return course;
+    }
 
     public String toString(){
         return "Name: " + super.toString() + "\nCourse: " + ((course == null) ? null : course.getName()) + "\n";

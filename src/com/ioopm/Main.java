@@ -21,13 +21,11 @@ public class Main{
         }else if (currentInput.substring(0, 9).equals("inventory")){
             System.out.println(player.getInventory());
         }else if (currentInput.substring(0, 7).equals("pick up")){
-           String rest = currentInput.substring(8);
-            /*if (rest.equals("key")){
-                player.pickup(player.getRoom().getKey());
-            }else{
-                player.pickup(player.getRoom().findBook(rest));
-            }*/
+            String rest = currentInput.substring(8);
             player.pickup(rest);
+        }else if (currentInput.substring(0, 6).equals("enroll")){
+            String rest = currentInput.substring(7);
+            player.enroll(world.findCourse(rest));
         }else if (currentInput.substring(0, 13).equals("use key with ")){
             String rest = currentInput.substring(13);
             if (!(rest.equals("north") || rest.equals("south") || rest.equals("east") || rest.equals("west"))) {

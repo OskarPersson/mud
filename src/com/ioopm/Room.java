@@ -33,6 +33,9 @@ public class Room {
     public void addTeacher(Teacher teacher){
         teachers.add(teacher);
     }
+    public ArrayList<Teacher> getTeachers(){
+        return teachers;
+    }
 
     public String getName(){
         return this.name;

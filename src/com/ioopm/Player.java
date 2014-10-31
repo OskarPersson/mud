@@ -45,6 +45,15 @@ public class Player extends Person {
             inventory.addItem(item);
         }
     }
+    public void enroll(Course course){
+        if (course != null && !unfinishedCourses.contains(course) && !finishedCourses.contains(course)) {
+            for (Teacher teacher : currentRoom.getTeachers()) {
+                if (teacher.getCourse() == course) {
+                    unfinishedCourses.add(course);
+                }
+            }
+        }
+    }
 
     public void setRoom(Room room){
         if (room != null) {
