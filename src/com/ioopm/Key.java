@@ -6,4 +6,8 @@ public class Key extends Item {
     public Key(){
         super(1);
     }
+
+    public String toString(){
+        return("Key");
+    }
 }
