@@ -10,36 +10,41 @@ public class Main{
     private void getInput(){
         System.out.println("Enter command: ");
         String currentInput = scanner.nextLine().toLowerCase();
-        if (currentInput.substring(0, 3).equals("go ")) {
-            String rest = currentInput.substring(3);
-            if (!(rest.equals("north") || rest.equals("south") || rest.equals("east") || rest.equals("west"))) {
+        try {
+            if (currentInput.startsWith("go")) {
+                String rest = currentInput.substring(3);
+                if (!(rest.startsWith("north") || rest.startsWith("south") || rest.startsWith("east") || rest.startsWith("west"))) {
+                    System.out.println("Incorrect input, try again");
+                    getInput();
+                } else {
+                    player.go(rest);
+                }
+            } else if (currentInput.equals("courses")) {
+                player.printCourses();
+            } else if (currentInput.equals("inventory")) {
+                System.out.println(player.getInventory());
+            } else if (currentInput.startsWith("pick up")) {
+                String rest = currentInput.substring(8);
+                player.pickup(rest);
+            } else if (currentInput.startsWith("enroll")) {
+                String rest = currentInput.substring(7);
+                player.enroll(world.findCourse(rest));
+            } else if (currentInput.startsWith("use key with")) {
+                String rest = currentInput.substring(13);
+                if (!(rest.startsWith("north") || rest.startsWith("south") || rest.startsWith("east") || rest.startsWith("west"))) {
+                    System.out.println("Incorrect input, try again");
+                    getInput();
+                } else {
+                    player.unlock(rest);
+                }
+            } else if (currentInput.equals("quit")) {
+                running = false;
+            } else {
                 System.out.println("Incorrect input, try again");
                 getInput();
-            } else {
-                player.go(rest);
             }
-        }else if (currentInput.equals("courses")){
-            player.printCourses();
-        }else if (currentInput.substring(0, 9).equals("inventory")){
-            System.out.println(player.getInventory());
-        }else if (currentInput.substring(0, 7).equals("pick up")){
-            String rest = currentInput.substring(8);
-            player.pickup(rest);
-        }else if (currentInput.substring(0, 6).equals("enroll")){
-            String rest = currentInput.substring(7);
-            player.enroll(world.findCourse(rest));
-        }else if (currentInput.substring(0, 13).equals("use key with ")){
-            String rest = currentInput.substring(13);
-            if (!(rest.equals("north") || rest.equals("south") || rest.equals("east") || rest.equals("west"))) {
-                System.out.println("Incorrect input, try again");
-                getInput();
-            } else {
-                player.unlock(rest);
-            }
-        }else if (currentInput.substring(0, 4).equals("quit")){
-            running = false;
-        }else{
-            System.out.println("Incorrect input, try again");
+        }catch(IndexOutOfBoundsException e){
+            System.out.println("Incorrect input, try again :)");
             getInput();
         }
     }
