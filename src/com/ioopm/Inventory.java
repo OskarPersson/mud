@@ -43,7 +43,7 @@ public class Inventory {
         String result = "\n";
         if (items.size() != 0) {
             for (Item item : items) {
-                result = result.concat(item.toString() + "\n");
+                result = result.concat(item + "\n");
             }
         }else{
             return "Inventory is empty";
