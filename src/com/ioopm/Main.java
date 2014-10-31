@@ -29,6 +29,8 @@ public class Main{
             } else if (currentInput.startsWith("drop")) {
                 String rest = currentInput.substring(5);
                 player.drop(rest);
+            } else if (currentInput.equals("room")) {
+                System.out.println(player.getRoom());
             } else if (currentInput.startsWith("enroll")) {
                 String rest = currentInput.substring(7);
                 player.enroll(world.findCourse(rest));
