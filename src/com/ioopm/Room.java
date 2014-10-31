@@ -59,6 +59,16 @@ public class Room {
         keys.add(key);
     }
 
+    public Book findBook(String name){
+        for (Book book : books){
+            if (book.getName().toLowerCase().equals(name.toLowerCase())){
+                return book;
+            }
+        }
+        System.out.println(name + " does not exist in this room");
+        return null;
+    }
+
     public Key getKey(){
         if (keys.size() > 0){
             Key key = keys.get(0);

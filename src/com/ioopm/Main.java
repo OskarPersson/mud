@@ -25,7 +25,7 @@ public class Main{
             if (rest.equals("key")){
                 player.pickup(player.getRoom().getKey());
             }else{
-                player.pickup(world.findBook(rest));
+                player.pickup(player.getRoom().findBook(rest));
             }
         }else if (currentInput.substring(0, 13).equals("use key with ")){
             String rest = currentInput.substring(13);
