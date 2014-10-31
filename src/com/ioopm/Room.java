@@ -66,6 +66,10 @@ public class Room {
         return null;
     }
 
+    public void removeItem(Item item){
+        items.remove(item);
+    }
+
     public String toString(){
         String roomDesc = this.name +
                 "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.getRoom().getName()  + " Locked: " + NORTH.getLocked()) +

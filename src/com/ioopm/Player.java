@@ -45,6 +45,7 @@ public class Player extends Person {
         Item item = currentRoom.findItem(name);
         if (item != null) {
             inventory.addItem(item);
+            currentRoom.removeItem(item);
         }
     }
     public void enroll(Course course) {
