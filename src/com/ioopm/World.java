@@ -66,7 +66,7 @@ public class World {
                         Integer.parseInt(explodedString[2]),
                         Integer.parseInt(explodedString[3]));
                 int ranIdx = ran.nextInt(rooms.size());
-                rooms.get(ranIdx).addBook(book);
+                rooms.get(ranIdx).addItem(book);
                 books.add(book);
             }
 
@@ -164,7 +164,7 @@ public class World {
 
             keyCounter = (int)Math.ceil(keyCounter*1.5);
             for (int j = 0; j < keyCounter; j++) {
-                rooms.get(ran.nextInt(rooms.size())).addKey(new Key());
+                rooms.get(ran.nextInt(rooms.size())).addItem(new Key());
             }
 
         } catch (FileNotFoundException e){

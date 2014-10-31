@@ -4,10 +4,6 @@ public class Key extends Item {
     private boolean used;
 
     public Key(){
-        super(1);
-    }
-
-    public String toString(){
-        return("Key");
+        super(1, "Key");
     }
 }

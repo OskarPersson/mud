@@ -39,7 +39,8 @@ public class Player extends Person {
         }
     }
 
-    public void pickup(Item item){
+    public void pickup(String name){
+        Item item = currentRoom.findItem(name);
         if (item != null) {
             inventory.addItem(item);
         }

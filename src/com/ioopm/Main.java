@@ -22,11 +22,12 @@ public class Main{
             System.out.println(player.getInventory());
         }else if (currentInput.substring(0, 7).equals("pick up")){
            String rest = currentInput.substring(8);
-            if (rest.equals("key")){
+            /*if (rest.equals("key")){
                 player.pickup(player.getRoom().getKey());
             }else{
                 player.pickup(player.getRoom().findBook(rest));
-            }
+            }*/
+            player.pickup(rest);
         }else if (currentInput.substring(0, 13).equals("use key with ")){
             String rest = currentInput.substring(13);
             if (!(rest.equals("north") || rest.equals("south") || rest.equals("east") || rest.equals("west"))) {

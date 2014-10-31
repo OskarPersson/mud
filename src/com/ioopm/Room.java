@@ -11,13 +11,11 @@ public class Room {
     private Door WEST;
     private ArrayList<Student> student;
     private ArrayList<Teacher> teachers;
-    private ArrayList<Book> books;
-    private ArrayList<Key> keys;
+    private ArrayList<Item> items;
 
     public Room(String name){
         this.name = name;
-        books = new ArrayList<Book>();
-        keys = new ArrayList<Key>();
+        items = new ArrayList<Item>();
         teachers = new ArrayList<Teacher>();
     }
 
@@ -28,8 +26,8 @@ public class Room {
         this.WEST = west;
     }
 
-    public void addBook(Book book){
-        books.add(book);
+    public void addItem(Item item){
+        items.add(item);
     }
 
     public void addTeacher(Teacher teacher){
@@ -55,29 +53,14 @@ public class Room {
         }
     }
 
-    public void addKey(Key key){
-        keys.add(key);
-    }
-
-    public Book findBook(String name){
-        for (Book book : books){
-            if (book.getName().toLowerCase().equals(name.toLowerCase())){
-                return book;
+    public Item findItem(String name){
+        for (Item item: items){
+            if (item.getName().toLowerCase().equals(name.toLowerCase())){
+                return item;
             }
         }
         System.out.println(name + " does not exist in this room");
         return null;
-    }
-
-    public Key getKey(){
-        if (keys.size() > 0){
-            Key key = keys.get(0);
-            keys.remove(key);
-            return key;
-        }else{
-            System.out.println("No keys in this room");
-            return null;
-        }
     }
 
     public String toString(){
@@ -87,16 +70,15 @@ public class Room {
                 "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.getRoom().getName() + " Locked: " + SOUTH.getLocked()) +
                 "\nWEST: "  + ((WEST  == null) ? "X" : WEST.getRoom().getName()  + " Locked: " + WEST.getLocked()) + "\n";
 
-        String keyString = "\n# of keys: " + keys.size() + "\n";
-        String bookString = "\nBooks: \n";
-        for(Book b : books){
-            bookString += b.toString() + "\n";
+        String itemString = "\nItems: \n";
+        for(Item item : items){
+            itemString += item + "\n";
         }
 
         String teacherString = "\nTeachers: \n";
         for(Teacher t : teachers){
             teacherString += t.toString() + "\n";
         }
-        return roomDesc + keyString + bookString + teacherString;
+        return roomDesc + itemString + teacherString;
     }
 }
