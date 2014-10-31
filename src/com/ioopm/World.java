@@ -195,7 +195,7 @@ public class World {
 
     public Course findCourse(String name){
         for (Course course : courses){
-            if (course.getName().equals(name)){
+            if (course.getName().toLowerCase().equals(name.toLowerCase())){
                 return course;
             }
         }

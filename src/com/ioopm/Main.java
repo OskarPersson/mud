@@ -18,6 +18,8 @@ public class Main{
             } else {
                 player.go(rest);
             }
+        }else if (currentInput.equals("courses")){
+            player.printCourses();
         }else if (currentInput.substring(0, 9).equals("inventory")){
             System.out.println(player.getInventory());
         }else if (currentInput.substring(0, 7).equals("pick up")){
