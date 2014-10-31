@@ -1,19 +1,28 @@
 package com.ioopm;
 
+import java.util.ArrayList;
+
 public class Door {
-    private Room room;
     private boolean locked;
+    private ArrayList<Room> rooms;
 
-    public Door(Room room, boolean locked){
-        this.room = room;
+    public Door(boolean locked){
         this.locked = locked;
+        rooms = new ArrayList<Room>();
     }
 
-    public Room getRoom(){
-        return this.room;
-    }
     public boolean getLocked(){
         return this.locked;
+    }
+
+    public void addRoom(Room room){
+        if (!rooms.contains(room)) {
+            rooms.add(room);
+        }
+    }
+
+    public Room otherRoom(Room room){
+        return rooms.get(0) == room ? rooms.get(1) : rooms.get(0);
     }
 
     public void unlock(){

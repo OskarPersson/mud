@@ -19,13 +19,6 @@ public class Room {
         teachers = new ArrayList<Teacher>();
     }
 
-    public void setDoors(Door north, Door east, Door south, Door west){
-        this.NORTH = north;
-        this.EAST = east;
-        this.SOUTH = south;
-        this.WEST = west;
-    }
-
     public void addItem(Item item){
         items.add(item);
     }
@@ -39,6 +32,23 @@ public class Room {
 
     public String getName(){
         return this.name;
+    }
+
+    public void setDoor(Door door, String direction){
+        switch(direction.toLowerCase()){
+            case "north":
+                this.NORTH = door;
+                break;
+            case "east":
+                this.EAST = door;
+                break;
+            case "south":
+                this.SOUTH = door;
+                break;
+            case "west":
+                this.WEST = door;
+                break;
+        }
     }
 
     public Door getDoor(String direction){
@@ -72,10 +82,10 @@ public class Room {
 
     public String toString(){
         String roomDesc = this.name +
-                "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.getRoom().getName()  + " Locked: " + NORTH.getLocked()) +
-                "\nEAST: "  + ((EAST  == null) ? "X" : EAST.getRoom().getName()  + " Locked: " + EAST.getLocked()) +
-                "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.getRoom().getName() + " Locked: " + SOUTH.getLocked()) +
-                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.getRoom().getName()  + " Locked: " + WEST.getLocked()) + "\n";
+                "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.otherRoom(this).getName()  + " Locked: " + NORTH.getLocked()) +
+                "\nEAST: "  + ((EAST  == null) ? "X" : EAST.otherRoom(this).getName()  + " Locked: " + EAST.getLocked()) +
+                "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.otherRoom(this).getName() + " Locked: " + SOUTH.getLocked()) +
+                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.otherRoom(this).getName()  + " Locked: " + WEST.getLocked()) + "\n";
 
         String itemString = "\nItems: \n";
         for(Item item : items){

@@ -21,7 +21,7 @@ public class Player extends Person {
         Door requestedDoor = currentRoom.getDoor(direction);
         if (!(requestedDoor == null)){
             if (!requestedDoor.getLocked()) {
-                setRoom(requestedDoor.getRoom());
+                setRoom(requestedDoor.otherRoom(currentRoom));
                 System.out.println(currentRoom);
             } else {
                 System.out.println("Dörren är låst");

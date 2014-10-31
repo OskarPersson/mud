@@ -140,10 +140,43 @@ public class World {
                 boolean southLocked = roomStrings.get(i)[7].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[7]);
                 boolean westLocked = roomStrings.get(i)[8].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[8]);
 
-                Door north = northRoom == null ? null : new Door(northRoom, northLocked);
-                Door east = eastRoom == null ? null :new Door(eastRoom, eastLocked);
-                Door south = southRoom == null ? null :new Door(southRoom, southLocked);
-                Door west = westRoom == null ? null :new Door(westRoom, westLocked);
+                Door door;
+                if (room.getDoor("north") == null) {
+                    door = northRoom == null ? null : new Door(northLocked);
+                    if (door != null){
+                        room.setDoor(door, "north");
+                        northRoom.setDoor(door, "south");
+                        door.addRoom(room);
+                        door.addRoom(northRoom);
+                    }
+                }
+                if (room.getDoor("east") == null) {
+                    door = eastRoom == null ? null : new Door(eastLocked);
+                    if (door != null){
+                        room.setDoor(door, "east");
+                        eastRoom.setDoor(door, "west");
+                        door.addRoom(room);
+                        door.addRoom(eastRoom);
+                    }
+                }
+                if (room.getDoor("south") == null) {
+                    door = southRoom == null ? null : new Door(southLocked);
+                    if (door != null){
+                        room.setDoor(door, "south");
+                        southRoom.setDoor(door, "north");
+                        door.addRoom(room);
+                        door.addRoom(southRoom);
+                    }
+                }
+                if (room.getDoor("west") == null) {
+                    door = westRoom == null ? null : new Door(westLocked);
+                    if (door != null){
+                        room.setDoor(door, "west");
+                        westRoom.setDoor(door, "east");
+                        door.addRoom(room);
+                        door.addRoom(westRoom);
+                    }
+                }
 
                 if (northLocked){
                     keyCounter++;
@@ -157,9 +190,6 @@ public class World {
                 if (westLocked){
                     keyCounter++;
                 }
-
-
-                room.setDoors(north, east, south, west);
                 i++;
             }
 
