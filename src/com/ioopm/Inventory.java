@@ -26,6 +26,15 @@ public class Inventory {
             capacity -= item.getSpace();
         }
     }
+
+    public Item findItem(String name){
+        for (Item item : items){
+            if (item.getName().toLowerCase().equals(name.toLowerCase())){
+                return item;
+            }
+        }
+        return null;
+    }
     
     public boolean useKey(){
         for (Item item : items){

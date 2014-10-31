@@ -26,6 +26,9 @@ public class Main{
             } else if (currentInput.startsWith("pick up")) {
                 String rest = currentInput.substring(8);
                 player.pickup(rest);
+            } else if (currentInput.startsWith("drop")) {
+                String rest = currentInput.substring(5);
+                player.drop(rest);
             } else if (currentInput.startsWith("enroll")) {
                 String rest = currentInput.substring(7);
                 player.enroll(world.findCourse(rest));

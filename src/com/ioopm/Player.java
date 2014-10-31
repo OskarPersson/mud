@@ -48,6 +48,15 @@ public class Player extends Person {
             currentRoom.removeItem(item);
         }
     }
+
+    public void drop(String name){
+        Item item = inventory.findItem(name);
+        if (item != null){
+            inventory.removeItem(item);
+        }
+        currentRoom.addItem(item);
+    }
+
     public void enroll(Course course) {
         if (course != null && !unfinishedCourses.contains(course) && !finishedCourses.contains(course)) {
             for (Teacher teacher : currentRoom.getTeachers()) {
