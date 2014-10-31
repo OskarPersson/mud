@@ -47,7 +47,7 @@ public class Main{
                 getInput();
             }
         }catch(IndexOutOfBoundsException e){
-            System.out.println("Incorrect input, try again :)");
+            System.out.println("Incorrect input, try again");
             getInput();
         }
     }
