@@ -28,9 +28,9 @@ public class World {
         initRooms(roomFilename);
         initNames("res/names.txt");
         initTeachers(10, 14);
-        initStudents(10, 14);
         initBooks(bookFilename);
         initCourses(courseFilename);
+        initStudents(10, 14);
 
     }
 
@@ -121,7 +121,12 @@ public class World {
 
         while (students.size() <= n_students){
             int rand = ran.nextInt(names.size());
-            students.add(new Student(names.remove(rand)));
+            int firstCourseId = ran.nextInt(courses.size());
+            int secondCourseId = ran.nextInt(courses.size());
+            while (secondCourseId == firstCourseId){
+                secondCourseId = ran.nextInt(courses.size());
+            }
+            students.add(new Student(names.remove(rand), courses.get(firstCourseId), courses.get(secondCourseId)));
         }
 
         for (Student student : students){
