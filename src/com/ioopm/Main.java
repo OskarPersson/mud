@@ -31,6 +31,9 @@ public class Main{
                 player.drop(rest);
             } else if (currentInput.equals("room")) {
                 System.out.println(player.getRoom());
+            } else if (currentInput.startsWith("trade")) {
+                String rest = currentInput.substring(6);
+                player.trade(player.getRoom().findStudent(rest));
             } else if (currentInput.startsWith("enroll")) {
                 String rest = currentInput.substring(7);
                 player.enroll(world.findCourse(rest));

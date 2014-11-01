@@ -67,6 +67,14 @@ public class Player extends Person {
         }
     }
 
+    public void trade(Student student){
+        Item itemToTrade = this.getInventory().findItem(student.getCurrentCourse().getBook().getName());
+        if (itemToTrade != null){
+            inventory.addItem(student.getFinishedCourse().getBook());
+            inventory.removeItem(itemToTrade);
+        }
+    }
+
     public void printCourses(){
         ArrayList<Course> courses = unfinishedCourses;
         courses.addAll(finishedCourses);

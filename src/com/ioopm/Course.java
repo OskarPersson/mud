@@ -15,6 +15,10 @@ public class Course {
         return name;
     }
 
+    public Book getBook(){
+        return book;
+    }
+
     public String toString(){
         return "Name: " + name + "\nBook: " + book + "\nHP: " + HP + "\n";
     }

@@ -76,6 +76,16 @@ public class Room {
         }
     }
 
+    public Student findStudent(String name){
+        for (Student student : students){
+            if (student.getName().toLowerCase().equals(name.toLowerCase())){
+                return student;
+            }
+        }
+        System.out.println(name + " does not exist in this room");
+        return null;
+    }
+
     public Item findItem(String name){
         for (Item item: items){
             if (item.getName().toLowerCase().equals(name.toLowerCase())){

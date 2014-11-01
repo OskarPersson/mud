@@ -10,6 +10,14 @@ public class Student extends Person{
         this.finishedCourse = finishedCourse;
     }
 
+    public Course getCurrentCourse(){
+        return currentCourse;
+    }
+
+    public Course getFinishedCourse(){
+        return finishedCourse;
+    }
+
     public String toString(){
         return "\n" + super.toString() + "\nFinished Course: " + finishedCourse.getName() + "\nCurrent Course: " + currentCourse.getName();
     }
