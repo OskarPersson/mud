@@ -12,9 +12,9 @@ public class Player extends Person {
     public Player(String name){
         super(name);
         hp = 60;
-        inventory = new Inventory();
-        finishedCourses = new ArrayList<Course>();
-        unfinishedCourses = new ArrayList<Course>();
+        inventory           = new Inventory();
+        finishedCourses     = new ArrayList<Course>();
+        unfinishedCourses   = new ArrayList<Course>();
     }
 
     public void go(String direction) {

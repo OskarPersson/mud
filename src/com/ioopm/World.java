@@ -17,7 +17,7 @@ public class World {
 
     public World(String roomFilename, String bookFilename, String courseFilename){
         rooms    = new ArrayList<Room>();
-        names = new ArrayList<String>();
+        names    = new ArrayList<String>();
         teachers = new ArrayList<Teacher>();
         students = new ArrayList<Student>();
         books    = new ArrayList<Book>();
@@ -70,8 +70,8 @@ public class World {
             while ((line = buffer.readLine()) != null) {
                 String[] explodedString = line.split(";", 4);
                 Book book = new Book(   explodedString[0], explodedString[1],
-                        Integer.parseInt(explodedString[2]),
-                        Integer.parseInt(explodedString[3]));
+                                        Integer.parseInt(explodedString[2]),
+                                        Integer.parseInt(explodedString[3]));
                 randRoom().addItem(book);
                 books.add(book);
             }
@@ -160,9 +160,9 @@ public class World {
                 Room westRoom   = findRoom(roomStrings.get(i)[4]);
 
                 boolean northLocked = roomStrings.get(i)[5].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[5]);
-                boolean eastLocked = roomStrings.get(i)[6].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[6]);
+                boolean eastLocked  = roomStrings.get(i)[6].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[6]);
                 boolean southLocked = roomStrings.get(i)[7].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[7]);
-                boolean westLocked = roomStrings.get(i)[8].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[8]);
+                boolean westLocked  = roomStrings.get(i)[8].equals("X") ? false : Boolean.valueOf(roomStrings.get(i)[8]);
 
                 Door door;
                 if (room.getDoor("north") == null) {

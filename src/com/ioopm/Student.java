@@ -6,7 +6,7 @@ public class Student extends Person{
 
     public Student(String name, Course currentCourse, Course finishedCourse){
         super(name);
-        this.currentCourse = currentCourse;
+        this.currentCourse  = currentCourse;
         this.finishedCourse = finishedCourse;
     }
 

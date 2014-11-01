@@ -15,9 +15,9 @@ public class Room {
 
     public Room(String name){
         this.name = name;
-        items = new ArrayList<Item>();
-        teachers = new ArrayList<Teacher>();
-        students = new ArrayList<Student>();
+        items       = new ArrayList<Item>();
+        teachers    = new ArrayList<Teacher>();
+        students    = new ArrayList<Student>();
     }
 
     public void addItem(Item item){
@@ -93,9 +93,9 @@ public class Room {
     public String toString(){
         String roomDesc = this.name +
                 "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.otherRoom(this).getName()  + " Locked: " + NORTH.getLocked()) +
-                "\nEAST: "  + ((EAST  == null) ? "X" : EAST.otherRoom(this).getName()  + " Locked: " + EAST.getLocked()) +
-                "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.otherRoom(this).getName() + " Locked: " + SOUTH.getLocked()) +
-                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.otherRoom(this).getName()  + " Locked: " + WEST.getLocked()) + "\n";
+                "\nEAST: "  + ((EAST  == null) ? "X" : EAST.otherRoom(this).getName()   + " Locked: " + EAST.getLocked()) +
+                "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.otherRoom(this).getName()  + " Locked: " + SOUTH.getLocked()) +
+                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.otherRoom(this).getName()   + " Locked: " + WEST.getLocked()) + "\n";
 
         String itemString = "\nItems: \n";
         for(Item item : items){
