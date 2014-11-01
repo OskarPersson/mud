@@ -72,8 +72,7 @@ public class World {
                 Book book = new Book(   explodedString[0], explodedString[1],
                         Integer.parseInt(explodedString[2]),
                         Integer.parseInt(explodedString[3]));
-                int ranIdx = ran.nextInt(rooms.size());
-                rooms.get(ranIdx).addItem(book);
+                randRoom().addItem(book);
                 books.add(book);
             }
 
@@ -112,8 +111,7 @@ public class World {
         }
 
         for (Teacher teacher : teachers){
-            int ranIdx = ran.nextInt(rooms.size());
-            rooms.get(ranIdx).addTeacher(teacher);
+            randRoom().addTeacher(teacher);
         }
 
     }
@@ -127,8 +125,7 @@ public class World {
         }
 
         for (Student student : students){
-            int ranIdx = ran.nextInt(rooms.size());
-            rooms.get(ranIdx).addStudent(student);
+            randRoom().addStudent(student);
         }
 
     }
@@ -217,7 +214,7 @@ public class World {
 
             keyCounter = (int)Math.ceil(keyCounter*1.5);
             for (int j = 0; j < keyCounter; j++) {
-                rooms.get(ran.nextInt(rooms.size())).addItem(new Key());
+                randRoom().addItem(new Key());
             }
 
         } catch (FileNotFoundException e){
