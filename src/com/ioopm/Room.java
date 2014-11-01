@@ -9,7 +9,7 @@ public class Room {
     private Door SOUTH;
     private Door EAST;
     private Door WEST;
-    private ArrayList<Student> student;
+    private ArrayList<Student> students;
     private ArrayList<Teacher> teachers;
     private ArrayList<Item> items;
 
@@ -17,15 +17,25 @@ public class Room {
         this.name = name;
         items = new ArrayList<Item>();
         teachers = new ArrayList<Teacher>();
+        students = new ArrayList<Student>();
     }
 
     public void addItem(Item item){
         items.add(item);
     }
 
+    public void addStudent(Student student){
+        students.add(student);
+    }
+
+    public ArrayList<Student> getStudents(){
+        return students;
+    }
+
     public void addTeacher(Teacher teacher){
         teachers.add(teacher);
     }
+
     public ArrayList<Teacher> getTeachers(){
         return teachers;
     }
@@ -96,6 +106,12 @@ public class Room {
         for(Teacher t : teachers){
             teacherString += t.toString() + "\n";
         }
-        return roomDesc + itemString + teacherString;
+
+        String studentString = "\nStudents: \n";
+        for(Student s : students){
+            studentString += s.toString() + "\n";
+        }
+
+        return roomDesc + itemString + teacherString + studentString;
     }
 }

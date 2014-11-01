@@ -7,7 +7,9 @@ import java.util.Random;
 
 public class World {
     private ArrayList<Room> rooms;
+    private ArrayList<String> names;
     private ArrayList<Teacher> teachers;
+    private ArrayList<Student> students;
     private ArrayList<Book> books;
     private ArrayList<Key> keys;
     private ArrayList<Course> courses;
@@ -15,14 +17,18 @@ public class World {
 
     public World(String roomFilename, String bookFilename, String courseFilename){
         rooms    = new ArrayList<Room>();
+        names = new ArrayList<String>();
         teachers = new ArrayList<Teacher>();
+        students = new ArrayList<Student>();
         books    = new ArrayList<Book>();
         keys     = new ArrayList<Key>();
         courses  = new ArrayList<Course>();
         ran      = new Random();
 
         initRooms(roomFilename);
-        initTeachers("res/names.txt");
+        initNames("res/names.txt");
+        initTeachers(10, 14);
+        initStudents(10, 14);
         initBooks(bookFilename);
         initCourses(courseFilename);
 
@@ -82,31 +88,47 @@ public class World {
         }
     }
 
-    private void initTeachers(String filepath){
-        ArrayList<String> teacherNames = new ArrayList<String>();
+    private void initNames(String filepath){
         try (InputStream inputStream = new FileInputStream("res/names.txt")){
             BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
             String line;
             while ((line = buffer.readLine()) != null) {
-                teacherNames.add(line);
+                names.add(line);
             }
-
         }catch(FileNotFoundException e){
-            System.out.print("File not found!");
+            System.out.print(filepath + " not found!");
 
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
 
-        int n_teachers = 10;
-        for(int i = 0; i <= n_teachers; i++){
-            String randName = teacherNames.get(ran.nextInt(teacherNames.size()));
-            teachers.add(new Teacher(randName));
+    private void initTeachers(int min, int max){
+        int n_teachers = ran.nextInt(max - min) + min;
+
+        while (teachers.size() <= n_teachers){
+            int rand = ran.nextInt(names.size());
+            teachers.add(new Teacher(names.remove(rand)));
         }
 
         for (Teacher teacher : teachers){
             int ranIdx = ran.nextInt(rooms.size());
             rooms.get(ranIdx).addTeacher(teacher);
+        }
+
+    }
+
+    private void initStudents(int min, int max){
+        int n_students = ran.nextInt(max - min) + min;
+
+        while (students.size() <= n_students){
+            int rand = ran.nextInt(names.size());
+            students.add(new Student(names.remove(rand)));
+        }
+
+        for (Student student : students){
+            int ranIdx = ran.nextInt(rooms.size());
+            rooms.get(ranIdx).addStudent(student);
         }
 
     }
