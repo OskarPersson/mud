@@ -17,13 +17,13 @@ public class World {
     private Random ran;
 
     public World(String roomFilename, String bookFilename, String courseFilename){
-        rooms    = new ArrayList<Room>();
-        names    = new ArrayList<String>();
-        teachers = new ArrayList<Teacher>();
-        students = new ArrayList<Student>();
-        books    = new ArrayList<Book>();
-        keys     = new ArrayList<Key>();
-        courses  = new ArrayList<Course>();
+        rooms    = new ArrayList<>();
+        names    = new ArrayList<>();
+        teachers = new ArrayList<>();
+        students = new ArrayList<>();
+        books    = new ArrayList<>();
+        keys     = new ArrayList<>();
+        courses  = new ArrayList<>();
         ran      = new Random();
 
         initRooms(roomFilename);
