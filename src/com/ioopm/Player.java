@@ -98,7 +98,9 @@ public class Player extends Person {
         return currentRoom;
     }
     public int getHP(){return hp; }
-    public boolean hasUnfinishedCourses(){return (unfinishedCourses!=null);}
+    public boolean hasUnfinishedCourses(){
+        return !unfinishedCourses.isEmpty();
+    }
     public Inventory getInventory(){
         return inventory;
     }
