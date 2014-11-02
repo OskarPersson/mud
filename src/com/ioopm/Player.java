@@ -94,7 +94,8 @@ public class Player extends Person {
     public Room getRoom(){
         return currentRoom;
     }
-
+    public int getHP(){return hp; }
+    public boolean hasUnfinishedCourses(){return (unfinishedCourses!=null);}
     public Inventory getInventory(){
         return inventory;
     }

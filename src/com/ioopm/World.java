@@ -13,6 +13,7 @@ public class World {
     private ArrayList<Book> books;
     private ArrayList<Key> keys;
     private ArrayList<Course> courses;
+    private Sphinx sphinx;
     private Random ran;
 
     public World(String roomFilename, String bookFilename, String courseFilename){
@@ -31,7 +32,11 @@ public class World {
         initBooks(bookFilename);
         initCourses(courseFilename);
         initStudents(10, 14);
+        initSphinx();
 
+    }
+    private void initSphinx(){
+        randRoom().addSphinx(new Sphinx());
     }
 
     private void initCourses(String filepath){

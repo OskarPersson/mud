@@ -12,12 +12,17 @@ public class Room {
     private ArrayList<Student> students;
     private ArrayList<Teacher> teachers;
     private ArrayList<Item> items;
+    private Sphinx sphinx;
 
     public Room(String name){
         this.name = name;
         items       = new ArrayList<Item>();
         teachers    = new ArrayList<Teacher>();
         students    = new ArrayList<Student>();
+        sphinx      = null;
+    }
+    public void addSphinx(Sphinx s){
+        sphinx = s;
     }
 
     public void addItem(Item item){
@@ -121,7 +126,12 @@ public class Room {
         for(Student s : students){
             studentString += s.toString() + "\n";
         }
+        String sphinxString = "";
 
-        return roomDesc + itemString + teacherString + studentString;
+        if (sphinx!=null){
+           sphinxString = "The sphinx is in this room";
+        }
+
+        return roomDesc + itemString + teacherString + studentString + sphinxString;
     }
 }
