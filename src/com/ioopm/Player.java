@@ -76,9 +76,12 @@ public class Player extends Person {
     }
 
     public void printCourses(){
-        ArrayList<Course> courses = unfinishedCourses;
-        courses.addAll(finishedCourses);
-        for (Course course : courses){
+        System.out.println("Unfinished Courses:");
+        for (Course course : unfinishedCourses) {
+            System.out.println(course.getName());
+        }
+        System.out.println("\nFinished Courses:");
+        for (Course course : finishedCourses) {
             System.out.println(course.getName());
         }
     }
