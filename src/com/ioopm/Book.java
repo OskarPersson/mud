@@ -11,6 +11,6 @@ public class Book extends Item{
     }
 
     public String toString(){
-        return "Title: " + super.getName() + "\nYear: " + year + "\nAuthor: " + author + "\nSpace: " + getSpace() + "\n";
+        return "Title: " + getName() + "\nYear: " + year + "\nAuthor: " + author + "\nSpace: " + getSpace() + "\n";
     }
 }

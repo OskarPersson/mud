@@ -43,7 +43,7 @@ public class World {
         try (InputStream inputStream = new FileInputStream(filepath)){
             BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
             String line;
-            while ((line = buffer.readLine()) != null) {
+            while ((line = buffer.readLine()) != null && teachers.size() > 0) {
                 String[] explodedString = line.split(";", 3);
                 Book courseBook = findBook(explodedString[1]);
                 if (courseBook != null) {
