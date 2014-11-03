@@ -7,7 +7,7 @@ public class Inventory {
     private ArrayList<Item> items;
 
     public Inventory(){
-        items = new ArrayList<Item>();
+        items = new ArrayList<>();
         capacity = 10;
     }
 

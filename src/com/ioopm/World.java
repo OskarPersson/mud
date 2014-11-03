@@ -143,7 +143,7 @@ public class World {
     private void initRooms(String filepath){
         try (InputStream inputStream = new FileInputStream(filepath)){
             BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
-            ArrayList<String[]> roomStrings = new ArrayList<String[]>();
+            ArrayList<String[]> roomStrings = new ArrayList<>();
             String line;
             while ((line = buffer.readLine()) != null) {
                 String[] explodedString = line.split("; ", 9);

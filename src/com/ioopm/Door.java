@@ -8,7 +8,7 @@ public class Door {
 
     public Door(boolean locked){
         this.locked = locked;
-        rooms = new ArrayList<Room>();
+        rooms = new ArrayList<>();
     }
 
     public boolean getLocked(){

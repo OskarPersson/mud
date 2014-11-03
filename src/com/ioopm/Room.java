@@ -16,9 +16,9 @@ public class Room {
 
     public Room(String name){
         this.name = name;
-        items       = new ArrayList<Item>();
-        teachers    = new ArrayList<Teacher>();
-        students    = new ArrayList<Student>();
+        items       = new ArrayList<>();
+        teachers    = new ArrayList<>();
+        students    = new ArrayList<>();
         sphinx      = null;
     }
     public void addSphinx(Sphinx s){
