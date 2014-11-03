@@ -25,6 +25,10 @@ public class Room {
         sphinx = s;
     }
 
+    public boolean hasSphinx(){
+        return sphinx != null;
+    }
+
     public void addItem(Item item){
         items.add(item);
     }
@@ -129,7 +133,7 @@ public class Room {
         String sphinxString = "";
 
         if (sphinx!=null){
-           sphinxString = "The sphinx is in this room";
+           sphinxString = "\nThe sphinx is in this room";
         }
 
         return roomDesc + itemString + teacherString + studentString + sphinxString;

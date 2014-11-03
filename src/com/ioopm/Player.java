@@ -75,6 +75,20 @@ public class Player extends Person {
         }
     }
 
+    public void graduate(){
+        if (hp >= 180 && !unfinishedCourses.isEmpty() && currentRoom.hasSphinx()){
+            System.out.println("You graduated!");
+            System.out.println("Finished Courses:");
+            for (Course course : finishedCourses) {
+                System.out.println(course.getName());
+            }
+        }else if(!currentRoom.hasSphinx()){
+            System.out.println("The sphinx is not in this room");
+        }else{
+            System.out.println("You don't qualify yet, you need 180 HP (you have "+hp+") and no unfinished courses");
+        }
+    }
+
     public void printCourses(){
         System.out.println("Unfinished Courses:");
         for (Course course : unfinishedCourses) {

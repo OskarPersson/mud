@@ -11,11 +11,6 @@ public class Sphinx extends Person {
         super("The Sphinx");
         initResponses();
     }
-    public void graduate(Player player){
-        if (player. getHP() >= 180 && !player.hasUnfinishedCourses()){
-            System.out.print("GRADUATE HEHE");
-        }
-    }
     public void talk(){
         int idx = new Random().nextInt(responses.size());
         System.out.print(responses.get(idx));
