@@ -5,3 +5,4 @@ Spelutveckling i Haskell;Babak Mohebolhoggeh;2014;2
 Funktionellt, bitte!;Tjark Weber;1992;1
 Hamsterhjulteori;Sven Svensson;1954;2
 Temp programming 101;Babak Mohebbeg..;2007;3
+Redovisning i Java;Erik Stackelberg;2001;1
