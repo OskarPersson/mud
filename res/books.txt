@@ -1,4 +1,7 @@
 Kaffekokning i pumpa av ohärdat glas;Annie Melin;1965;2
-Kaffekokning i pumpa av ohärdat glas 2;Annie Melin;1966;1
-Kaffekokning i pumpa av ohärdat glas 3;Annie Melin;1967;3
-Kaffekokning i pumpa av ohärdat glas 4;Annie Melin;1968;1
+Fl�skstekning 101;Inger Ster;1992; 3
+St�lmannen i modern tid;Hans Jonsson;2014;1
+Spelutveckling i Haskell;Babak Mohebolhoggeh;2014;2 
+Funktionellt, bitte!;Tjark Weber;1992;1
+Hamsterhjulteori;Sven Svensson;1954;2
+Temp programming 101;Babak Mohebbeg..;2007;3
