@@ -6,3 +6,10 @@ Funktionellt, bitte!;Tjark Weber;1992;1
 Hamsterhjulteori;Sven Svensson;1954;2
 Temp programming 101;Babak Mohebbeg..;2007;3
 Redovisning i Java;Erik Stackelberg;2001;1
+Kast med litet bord;Oskar Persson;1994;2
+Frisörteori;Rickard Jonsson;1995;3
+DiscusDans;Petrus Jansson;2003;3
+Labrador på medeltiden;Henrik Undsson;1992;1
+Brottning med hajar;Martin Blomgren;1922;2
+Techno eurodance och hardstyle;Dave Clark;1984;3
+Solceller och äpplejuice;Jan Jansson;1950;1
