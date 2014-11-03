@@ -67,6 +67,22 @@ public class Player extends Person {
         }
     }
 
+    public void talk(String name){
+        Student student = currentRoom.findStudent(name);
+        if (student != null){
+            Item itemToTrade = getInventory().findItem(student.getCurrentCourse().getBook().getName());
+            if (itemToTrade != null){
+                inventory.removeItem(itemToTrade);
+                // TODO
+                // Remove 1 answer from course question;
+            }
+        }else if (currentRoom.hasSphinx()) {
+            currentRoom.getSphinx().talk();
+        }else{
+            System.out.println("The sphinx or any student with the name " + name + " is in this room");
+        }
+    }
+
     public void trade(Student student){
         Item itemToTrade = this.getInventory().findItem(student.getCurrentCourse().getBook().getName());
         if (itemToTrade != null){

@@ -39,6 +39,9 @@ public class Main{
                 player.enroll(world.findCourse(rest));
             } else if (currentInput.equals("graduate")) {
                 player.graduate();
+            } else if (currentInput.startsWith("talk")) {
+                String rest = currentInput.substring(5);
+                player.talk(rest);
             } else if (currentInput.startsWith("use key with")) {
                 String rest = currentInput.substring(13);
                 if (!(rest.startsWith("north") || rest.startsWith("south") || rest.startsWith("east") || rest.startsWith("west"))) {

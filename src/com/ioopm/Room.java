@@ -29,6 +29,10 @@ public class Room {
         return sphinx != null;
     }
 
+    public Sphinx getSphinx(){
+        return sphinx;
+    }
+
     public void addItem(Item item){
         items.add(item);
     }
