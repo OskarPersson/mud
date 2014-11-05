@@ -70,7 +70,7 @@ public class Main{
     }
 
     private Main(){
-        world  = new World("res/world.txt", "res/books.txt", "res/courses.txt");
+        world  = new World("res/world.txt", "res/books.txt", "res/courses.txt", "res/questions.txt");
         player = new Player("PLAYER");
         player.setRoom(world.randRoom());
         System.out.println("Current room:\n" + player.getRoom());

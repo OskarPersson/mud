@@ -13,24 +13,27 @@ public class World {
     private ArrayList<Book> books;
     private ArrayList<Key> keys;
     private ArrayList<Course> courses;
+    private ArrayList<Question> questions;
     private Sphinx sphinx;
     private Random ran;
 
-    public World(String roomFilename, String bookFilename, String courseFilename){
-        rooms    = new ArrayList<>();
-        names    = new ArrayList<>();
-        teachers = new ArrayList<>();
-        students = new ArrayList<>();
-        books    = new ArrayList<>();
-        keys     = new ArrayList<>();
-        courses  = new ArrayList<>();
-        ran      = new Random();
+    public World(String roomFilename, String bookFilename, String courseFilename, String questionFilename){
+        rooms     = new ArrayList<>();
+        names     = new ArrayList<>();
+        teachers  = new ArrayList<>();
+        students  = new ArrayList<>();
+        books     = new ArrayList<>();
+        keys      = new ArrayList<>();
+        courses   = new ArrayList<>();
+        questions = new ArrayList<>();
+        ran       = new Random();
 
         initRooms(roomFilename);
         initNames("res/names.txt");
         initTeachers(10, 14);
         initBooks(bookFilename);
         initCourses(courseFilename);
+        initQuestions(questionFilename);
         initStudents(10, 14);
         initSphinx();
 
@@ -65,7 +68,33 @@ public class World {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
 
+    private void initQuestions(String filepath){
+        try (InputStream inputStream = new FileInputStream(filepath)){
+            BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+            String line;
+            while ((line = buffer.readLine()) != null) {
+                String[] explodedString = line.split(";", 6);
+                Course questionCourse = findCourse(explodedString[0]);
+                if (questionCourse != null) {
+                    String[] answers = {explodedString[2], explodedString[3],explodedString[4]};
+                    Question question = new Question(   explodedString[1], answers,
+                                                        Integer.parseInt(explodedString[5]));
+                    questionCourse.setQuestion(question);
+                    questions.add(question);
+                }
+            }
+
+            // Done with the file
+            buffer.close();
+            inputStream.close();
+
+        } catch (FileNotFoundException e){
+            System.out.println(filepath + " not found!");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private void initBooks(String filepath){

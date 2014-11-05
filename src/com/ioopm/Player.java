@@ -73,8 +73,8 @@ public class Player extends Person {
             Item itemToTrade = getInventory().findItem(student.getCurrentCourse().getBook().getName());
             if (itemToTrade != null){
                 inventory.removeItem(itemToTrade);
-                // TODO
-                // Remove 1 answer from course question;
+                Question question = student.getCurrentCourse().getQuestion();
+                System.out.println("The correct answer to \""+ question.getText() +"\" is \""+ question.getCorrectAnswer() +"\" ");
             }
         }else if (currentRoom.hasSphinx()) {
             currentRoom.getSphinx().talk();
