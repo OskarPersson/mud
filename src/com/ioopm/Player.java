@@ -24,10 +24,10 @@ public class Player extends Person {
                 setRoom(requestedDoor.otherRoom(currentRoom));
                 System.out.println(currentRoom);
             } else {
-                System.out.println("Dörren är låst");
+                System.out.println("That door is locked!");
             }
         }else{
-            System.out.println("Finns ingen dörr här");
+            System.out.println("There is no door in this direction.");
         }
     }
 
@@ -37,7 +37,7 @@ public class Player extends Person {
                 currentRoom.getDoor(direction).unlock();
             }
         }else{
-            System.out.println("Finns ingen dörr här");
+            System.out.println("There is no door in this direction.");
         }
     }
 
@@ -46,12 +46,14 @@ public class Player extends Person {
         if (item != null) {
             inventory.addItem(item);
             currentRoom.removeItem(item);
+            System.out.println("You picked up " + item.getName());
         }
     }
 
     public void drop(String name){
         Item item = inventory.findItem(name);
         if (item != null){
+            System.out.println("You dropped " + item.getName());
             inventory.removeItem(item);
         }
         currentRoom.addItem(item);
@@ -61,6 +63,7 @@ public class Player extends Person {
         if (course != null && !unfinishedCourses.contains(course) && !finishedCourses.contains(course)) {
             for (Teacher teacher : currentRoom.getTeachers()) {
                 if (teacher.getCourse() == course) {
+                    System.out.println("Enrolled " + course.getName());
                     unfinishedCourses.add(course);
                 }
             }
@@ -120,7 +123,7 @@ public class Player extends Person {
         if (room != null) {
             this.currentRoom = room;
         }else{
-            System.out.println("Du måste vara i ett rum");
+            System.out.println("You have to be in a room.");
         }
     }
 

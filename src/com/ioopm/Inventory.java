@@ -16,7 +16,7 @@ public class Inventory {
             items.add(item);
             capacity -= item.getSpace();
         }else{
-            System.out.println("Inventory full");
+            System.out.println("Your inventory is full");
         }
     }
 
