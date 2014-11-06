@@ -52,6 +52,16 @@ public abstract class Item {
     }
 
     /**
+     * Checks if the given item has the same name and takes up as much space as the instance item
+     * @param item item to compare to
+     * @return true if they have the same values, else false
+     */
+
+    public boolean equals(Item item){
+        return name == item.name && inventorySpace == item.inventorySpace;
+    }
+
+    /**
      * Gets the name of the item
      * @return the name of the item
      */

@@ -31,13 +31,16 @@ public class Inventory {
 
     /**
      * Removes an item from the inventory
-     * @param item the item to removed
+     * @param itemToRemove the item to remove
      */
 
-    public void removeItem(Item item){
-        if (items.contains(item)) {
-            items.remove(item);
-            capacity -= item.getSpace();
+    public void removeItem(Item itemToRemove){
+        for (Item item : items){
+            if (item.equals(itemToRemove)){
+                items.remove(item);
+                capacity -= item.getSpace();
+                break;
+            }
         }
     }
 
