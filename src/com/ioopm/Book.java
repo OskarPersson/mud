@@ -5,6 +5,19 @@ public class Book extends Item{
     private int year;
 
     /**
+     * Creates a book with a name, author and year
+     * @param name name of the book
+     * @param author author of the book
+     * @param year the year the book was released
+     */
+
+    public Book(String name, String author, int year){
+        super(name);
+        this.author = author;
+        this.year = year;
+    }
+
+    /**
      * Creates a book with a name, author, year and inventory space
      * @param name name of the book
      * @param author author of the book

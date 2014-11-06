@@ -13,6 +13,17 @@ public class Teacher extends Person {
     }
 
     /**
+     * Creates a teacher with a name and a course
+     * @param name Name of the teacher
+     * @param course The teacher's course
+     */
+
+    public Teacher(String name, Course course){
+        super(name);
+        this.course = course;
+    }
+
+    /**
      * Sets the teacher's course
      * @param course The new course
      */
