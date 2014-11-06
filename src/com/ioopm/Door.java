@@ -11,7 +11,7 @@ public class Door {
         rooms = new ArrayList<>();
     }
 
-    public boolean getLocked(){
+    public boolean isLocked(){
         return this.locked;
     }
 

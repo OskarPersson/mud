@@ -115,10 +115,10 @@ public class Room {
 
     public String toString(){
         String roomDesc = this.name +
-                "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.otherRoom(this).getName()  + " Locked: " + NORTH.getLocked()) +
-                "\nEAST: "  + ((EAST  == null) ? "X" : EAST.otherRoom(this).getName()   + " Locked: " + EAST.getLocked()) +
-                "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.otherRoom(this).getName()  + " Locked: " + SOUTH.getLocked()) +
-                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.otherRoom(this).getName()   + " Locked: " + WEST.getLocked()) + "\n";
+                "\nNORTH: " + ((NORTH == null) ? "X" : NORTH.otherRoom(this).getName()  + " Locked: " + NORTH.isLocked()) +
+                "\nEAST: "  + ((EAST  == null) ? "X" : EAST.otherRoom(this).getName()   + " Locked: " + EAST.isLocked()) +
+                "\nSOUTH: " + ((SOUTH == null) ? "X" : SOUTH.otherRoom(this).getName()  + " Locked: " + SOUTH.isLocked()) +
+                "\nWEST: "  + ((WEST  == null) ? "X" : WEST.otherRoom(this).getName()   + " Locked: " + WEST.isLocked()) + "\n";
 
         String itemString = "\nItems: \n";
         for(Item item : items){

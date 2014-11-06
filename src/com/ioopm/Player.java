@@ -31,7 +31,7 @@ public class Player extends Person {
     public void go(String direction) {
         Door requestedDoor = currentRoom.getDoor(direction);
         if (!(requestedDoor == null)){
-            if (!requestedDoor.getLocked()) {
+            if (!requestedDoor.isLocked()) {
                 setRoom(requestedDoor.otherRoom(currentRoom));
                 System.out.println(currentRoom);
             } else {
