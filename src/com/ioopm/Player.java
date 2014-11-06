@@ -55,8 +55,8 @@ public class Player extends Person {
         if (item != null){
             System.out.println("You dropped " + item.getName());
             inventory.removeItem(item);
+            currentRoom.addItem(item);
         }
-        currentRoom.addItem(item);
     }
 
     public void enroll(Course course) {
