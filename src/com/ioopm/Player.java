@@ -9,6 +9,11 @@ public class Player extends Person {
     private int hp;
     private Room currentRoom;
 
+    /**
+     * Creates the player with a name, 60 HP, an empty inventory, no finished courses
+     * and no unfinished courses
+     * @param name The name of the player
+     */
     public Player(String name){
         super(name);
         hp = 60;
@@ -16,6 +21,12 @@ public class Player extends Person {
         finishedCourses     = new ArrayList<Course>();
         unfinishedCourses   = new ArrayList<Course>();
     }
+
+    /**
+     * Moves the player, if possible, in the given direction and prints the description of the new room.
+     * If not possible, a message is printed.
+     * @param direction The direction [north, east, south, or west] to go
+     */
 
     public void go(String direction) {
         Door requestedDoor = currentRoom.getDoor(direction);
@@ -31,6 +42,12 @@ public class Player extends Person {
         }
     }
 
+    /**
+     * Use a key in the inventory to unlock a door in the given direction.
+     * Prints a message if there is no door in the given direction.
+     * @param direction the direction of the door to unlock
+     */
+
     public void unlock(String direction){
         if (currentRoom.getDoor(direction) != null){
             if (inventory.useKey()) {
@@ -41,6 +58,11 @@ public class Player extends Person {
         }
     }
 
+    /**
+     * Picks up an item and adds it to the inventory
+     * @param name the name of the item
+     */
+
     public void pickup(String name){
         Item item = currentRoom.findItem(name);
         if (item != null) {
@@ -50,6 +72,11 @@ public class Player extends Person {
         }
     }
 
+    /**
+     * Drops an item and adds it to the room
+     * @param name the name of the item
+     */
+
     public void drop(String name){
         Item item = inventory.findItem(name);
         if (item != null){
@@ -58,6 +85,11 @@ public class Player extends Person {
             currentRoom.addItem(item);
         }
     }
+
+    /**
+     * Enroll a course
+     * @param course the course to enroll
+     */
 
     public void enroll(Course course) {
         if (course != null && !unfinishedCourses.contains(course) && !finishedCourses.contains(course)) {
@@ -69,6 +101,11 @@ public class Player extends Person {
             }
         }
     }
+
+    /**
+     * Talk to a student or a sphinx
+     * @param name name of the student or the sphinx to talk to
+     */
 
     public void talk(String name){
         Student student = currentRoom.findStudent(name);
@@ -86,6 +123,12 @@ public class Player extends Person {
         }
     }
 
+    /**
+     * Give a student the book of the student's current course in exchange
+     * for the book to the student's finished course
+     * @param student the student to trade with
+     */
+
     public void trade(Student student){
         Item itemToTrade = this.getInventory().findItem(student.getCurrentCourse().getBook().getName());
         if (itemToTrade != null){
@@ -93,6 +136,11 @@ public class Player extends Person {
             inventory.removeItem(itemToTrade);
         }
     }
+
+    /**
+     * Graduate if the player has >= 180 HP, no unfinished courses and
+     * is in the same room as the sphinx
+     */
 
     public void graduate(){
         if (hp >= 180 && !unfinishedCourses.isEmpty() && currentRoom.hasSphinx()){
@@ -108,6 +156,10 @@ public class Player extends Person {
         }
     }
 
+    /**
+     * Prints the player's courses
+     */
+
     public void printCourses(){
         System.out.println("Unfinished Courses:");
         for (Course course : unfinishedCourses) {
@@ -119,6 +171,11 @@ public class Player extends Person {
         }
     }
 
+    /**
+     * Sets the room of the player
+     * @param room the new room
+     */
+
     public void setRoom(Room room){
         if (room != null) {
             this.currentRoom = room;
@@ -127,13 +184,36 @@ public class Player extends Person {
         }
     }
 
+    /**
+     * Gets the player's current room
+     * @return current room of the player
+     */
+
     public Room getRoom(){
         return currentRoom;
     }
+
+    /**
+     * Gets the player's HP
+     * @return player's HP
+     */
+
     public int getHP(){return hp; }
+
+    /**
+     * Checks if the player has any unfinished courses
+     * @return true if the player has unfinished courses, else false
+     */
+
     public boolean hasUnfinishedCourses(){
         return !unfinishedCourses.isEmpty();
     }
+
+    /**
+     * Gets the player's inventory
+     * @return inventory of the player
+     */
+
     public Inventory getInventory(){
         return inventory;
     }
