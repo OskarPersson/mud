@@ -14,6 +14,11 @@ public class Room {
     private ArrayList<Item> items;
     private Sphinx sphinx;
 
+    /**
+     * Creates an empty room with the given name
+     * @param name name of the room
+     */
+
     public Room(String name){
         this.name = name;
         items       = new ArrayList<>();
@@ -21,41 +26,93 @@ public class Room {
         students    = new ArrayList<>();
         sphinx      = null;
     }
+
+    /**
+     * Adds a sphinx to the room
+     * @param s the sphinx to add
+     */
+
     public void addSphinx(Sphinx s){
         sphinx = s;
     }
+
+    /**
+     * Checks if a sphinx exists in the room
+     * @return true if a sphinx exists in the room, else false
+     */
 
     public boolean hasSphinx(){
         return sphinx != null;
     }
 
+    /**
+     * Gets the sphinx in the room
+     * @return The sphinx in the room, null if there is none
+     */
+
     public Sphinx getSphinx(){
         return sphinx;
     }
+
+    /**
+     * Adds an item to the room
+     * @param item the item to add
+     */
 
     public void addItem(Item item){
         items.add(item);
     }
 
+    /**
+     * Adds a student to the room
+     * @param student the student to add
+     */
+
     public void addStudent(Student student){
         students.add(student);
     }
+
+    /**
+     * Gets the students in the room
+     * @return the students in the room
+     */
 
     public ArrayList<Student> getStudents(){
         return students;
     }
 
+    /**
+     * Adds a teacher to the room
+     * @param teacher teacher to add
+     */
+
     public void addTeacher(Teacher teacher){
         teachers.add(teacher);
     }
+
+    /**
+     * Gets the teachers in the room
+     * @return the teachers in the rooom
+     */
 
     public ArrayList<Teacher> getTeachers(){
         return teachers;
     }
 
+    /**
+     * Gets the name of the room
+     * @return the name of the room
+     */
+
     public String getName(){
         return this.name;
     }
+
+    /**
+     * Set the door at the given direction
+     * @param door the new door
+     * @param direction the direction to set the door [north, east, south or west]
+     */
 
     public void setDoor(Door door, String direction){
         switch(direction.toLowerCase()){
@@ -74,6 +131,12 @@ public class Room {
         }
     }
 
+    /**
+     * Get the door at the given direction
+     * @param direction the direction the door is at [north, east, south or west]
+     * @return the door at the given direction
+     */
+
     public Door getDoor(String direction){
         switch(direction.toLowerCase()){
             case "north":
@@ -89,6 +152,12 @@ public class Room {
         }
     }
 
+    /**
+     * Finds a student in the room with the given name
+     * @param name name of the student
+     * @return the student with the given name, null if there is none
+     */
+
     public Student findStudent(String name){
         for (Student student : students){
             if (student.getName().toLowerCase().equals(name.toLowerCase())){
@@ -98,6 +167,12 @@ public class Room {
         System.out.println(name + " does not exist in this room");
         return null;
     }
+
+    /**
+     * Finds an item in the room with the given name
+     * @param name name of the item
+     * @return the item with the given name, null if there is none
+     */
 
     public Item findItem(String name){
         for (Item item: items){
@@ -109,9 +184,19 @@ public class Room {
         return null;
     }
 
+    /**
+     * Removes the given item from the room
+     * @param item the item to remove
+     */
+
     public void removeItem(Item item){
         items.remove(item);
     }
+
+    /**
+     * Gets a string representing of the room
+     * @return a string representation of the room
+     */
 
     public String toString(){
         String roomDesc = this.name +

@@ -7,10 +7,20 @@ import java.util.Random;
 
 public class Sphinx extends Person {
     private ArrayList<String> responses;
+
+    /**
+     * Creates a sphinx with the name "The Sphinx"
+     */
+
     public Sphinx(){
         super("The Sphinx");
         initResponses();
     }
+
+    /**
+     * Prints a random response
+     */
+
     public void talk(){
         int idx = new Random().nextInt(responses.size());
         System.out.print(responses.get(idx));

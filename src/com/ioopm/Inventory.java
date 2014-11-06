@@ -6,10 +6,19 @@ public class Inventory {
     private int capacity;
     private ArrayList<Item> items;
 
+    /**
+     * Creates an empty inventory with a capacity of 10
+     */
+
     public Inventory(){
         items = new ArrayList<>();
         capacity = 10;
     }
+
+    /**
+     * Adds an item (if it fits) to the inventory
+     * @param item the item to add
+     */
 
     public void addItem(Item item){
         if (capacity - item.getSpace() >= 0) {
@@ -20,12 +29,23 @@ public class Inventory {
         }
     }
 
+    /**
+     * Removes an item from the inventory
+     * @param item the item to removed
+     */
+
     public void removeItem(Item item){
         if (items.contains(item)) {
             items.remove(item);
             capacity -= item.getSpace();
         }
     }
+
+    /**
+     * Finds an item with the given name in the inventory
+     * @param name name of the item
+     * @return the item with the given name, null if it doesn't exist
+     */
 
     public Item findItem(String name){
         for (Item item : items){
@@ -35,6 +55,11 @@ public class Inventory {
         }
         return null;
     }
+
+    /**
+     * Uses the key and removes it
+     * @return true if the key is used, else false
+     */
     
     public boolean useKey(){
         for (Item item : items){
@@ -47,6 +72,11 @@ public class Inventory {
         System.out.println("You have no keys");
         return false;
     }
+
+    /**
+     * Lists the items in the inventory
+     * @return a string representation of the inventory
+     */
 
     public String toString(){
         String result = "\n";

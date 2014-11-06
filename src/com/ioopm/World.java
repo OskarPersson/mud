@@ -17,6 +17,14 @@ public class World {
     private Sphinx sphinx;
     private Random ran;
 
+    /**
+     * Creates a world with rooms, persons and items
+     * @param roomFilename Path to the .txt file containing the rooms
+     * @param bookFilename Path to the .txt file containing the books
+     * @param courseFilename Path to the .txt file containing the courses
+     * @param questionFilename Path to the .txt file containing the questions
+     */
+
     public World(String roomFilename, String bookFilename, String courseFilename, String questionFilename){
         rooms     = new ArrayList<>();
         names     = new ArrayList<>();
@@ -263,6 +271,12 @@ public class World {
         }
     }
 
+    /**
+     * Gets the room with the given name
+     * @param name name of the room
+     * @return the room with the given name. If it doesn't exist then return null
+     */
+
     public Room findRoom(String name){
         for (Room room : rooms){
             if (room.getName().equals(name)){
@@ -271,6 +285,12 @@ public class World {
         }
         return null;
     }
+
+    /**
+     * Gets the book with the given name
+     * @param name name of the book
+     * @return the book with the given name. If it doesn't exist then return null
+     */
 
     public Book findBook(String name){
         for (Book book : books){
@@ -281,6 +301,12 @@ public class World {
         return null;
     }
 
+    /**
+     * Gets the course with the given name
+     * @param name name of the course
+     * @return the course with the given name. If it doesn't exist then return null
+     */
+
     public Course findCourse(String name){
         for (Course course : courses){
             if (course.getName().toLowerCase().equals(name.toLowerCase())){
@@ -290,9 +316,19 @@ public class World {
         return null;
     }
 
+    /**
+     * A random room
+     * @return a random room
+     */
+
     public Room randRoom(){
         return rooms.get(ran.nextInt(rooms.size()));
     }
+
+    /**
+     * Gets a string representation the world
+     * @return a string representing each room in the world
+     */
 
     public String toString(){
         String result = "";
