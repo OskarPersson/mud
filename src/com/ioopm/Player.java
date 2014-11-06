@@ -79,7 +79,7 @@ public class Player extends Person {
                 Question question = student.getCurrentCourse().getQuestion();
                 System.out.println("The correct answer to \""+ question.getText() +"\" is \""+ question.getCorrectAnswer() +"\" ");
             }
-        }else if (currentRoom.hasSphinx()) {
+        }else if (name.equals("sphinx") && currentRoom.hasSphinx()) {
             currentRoom.getSphinx().talk();
         }else{
             System.out.println("The sphinx or any student with the name " + name + " is in this room");
