@@ -58,7 +58,7 @@ public abstract class Item {
      */
 
     public boolean equals(Item item){
-        return name == item.name && inventorySpace == item.inventorySpace;
+        return name.equals(item.name) && inventorySpace == item.inventorySpace;
     }
 
     /**
