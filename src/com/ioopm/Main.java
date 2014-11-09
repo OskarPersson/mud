@@ -85,6 +85,7 @@ public class Main{
         }
         player = new Player("PLAYER", startCourses, world.randRoom());
         System.out.println("Current room:\n" + player.getRoom());
+        player.getRoom().askQuestions(player);
     }
 
     public static void main(String[] args){

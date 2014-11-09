@@ -56,6 +56,15 @@ public class Course {
     }
 
     /**
+     * Gets the HP for the course
+     * @return the HP for the course
+     */
+
+    public int getHP(){
+        return HP;
+    }
+
+    /**
      * A string representation of the course
      * @return a string representing the course
      */

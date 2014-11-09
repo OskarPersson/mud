@@ -2,6 +2,8 @@ package com.ioopm;
 
 
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Room {
     private String name;
@@ -97,6 +99,68 @@ public class Room {
 
     public ArrayList<Teacher> getTeachers(){
         return teachers;
+    }
+
+    /**
+     * The teachers in the room asks the question for the course if (75% chance) the player currently has the course or (50% chance)
+     * the player has finished the course. If it's a current course and the player answers the question correctly then finish the course,
+     * else nothing happens. If it's a finished course and the player answers the question correctly then nothing happens,
+     * else the course is removed from the player's finished courses and the player loses the courses HP.
+     * @param player the player to ask
+     */
+
+    public void askQuestions(Player player){
+        ArrayList<Teacher> teachers = getTeachers();
+        for (Teacher teacher : teachers){
+            Course course = teacher.getCourse();
+            Scanner scanner = new Scanner(System.in);
+            Random ran = new Random();
+            if (player.getUnfinishedCourses().contains(course)){
+                if (ran.nextInt(4) < 3){ //75% chance
+                    System.out.print(teacher.getName() + " asks: ");
+                    System.out.println(course.getQuestion());
+                    System.out.print("Answer #: ");
+                    int input = 0;
+                    while(input < 1 || input > 3) {
+                        try {
+                            input = Integer.parseInt(scanner.nextLine());
+                            if (input-1 == course.getQuestion().getCorrectAnswerIdx()){
+                                System.out.println("Correct!");
+                                player.finishCourse(course);
+                            }else if (input < 1 || input > 3){
+                                System.out.println("Not a valid input, try again");
+                            }else{
+                                System.out.println("Wrong!");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Not a valid input, try again");
+                        }
+                    }
+                }
+            }else if(player.getFinishedCourses().contains(course)){
+                if (ran.nextInt(2) == 0){ //50% chance
+                    System.out.print(teacher.getName() + " asks (50%): ");
+                    System.out.println(course.getQuestion());
+                    System.out.print("Answer #: ");
+                    int input = 0;
+                    while(input < 1 || input > 3) {
+                        try {
+                            input = Integer.parseInt(scanner.nextLine());
+                            if (input-1 == course.getQuestion().getCorrectAnswerIdx()){
+                                System.out.println("Correct!");
+                            }else if (input < 1 || input > 3){
+                                System.out.println("Not a valid input, try again");
+                            }else{
+                                System.out.println("Wrong!");
+                                player.removeFinishedCourse(course);
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Not a valid input, try again");
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**

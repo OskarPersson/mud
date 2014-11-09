@@ -35,4 +35,22 @@ public class Question {
     public String getCorrectAnswer(){
         return answers[correctIdx];
     }
+
+    /**
+     * Gets the correct answer index to the question
+     * @return the correct question answer index
+     */
+
+    public int getCorrectAnswerIdx(){
+        return correctIdx;
+    }
+
+    /**
+     * A string representation of the question
+     * @return a string representing the question
+     */
+
+    public String toString(){
+        return text + " (1-3)\n#1 " + answers[0] + "\n#2 " + answers[1] + "\n#3 " + answers[2] + "\n";
+    }
 }

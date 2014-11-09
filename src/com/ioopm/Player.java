@@ -24,7 +24,8 @@ public class Player extends Person {
     }
 
     /**
-     * Moves the player, if possible, in the given direction and prints the description of the new room.
+     * Moves the player, if possible, in the given direction, prints the description of the new room and the teachers
+     * in the room may ask questions.
      * If not possible, a message is printed.
      * @param direction The direction [north, east, south, or west] to go
      */
@@ -35,6 +36,7 @@ public class Player extends Person {
             if (!requestedDoor.isLocked()) {
                 setRoom(requestedDoor.otherRoom(currentRoom));
                 System.out.println(currentRoom);
+                currentRoom.askQuestions(this);
             } else {
                 System.out.println("That door is locked!");
             }
@@ -158,17 +160,58 @@ public class Player extends Person {
     }
 
     /**
+     * Gets the player's finished courses
+     * @return the player's finished courses
+     */
+
+    public ArrayList<Course> getFinishedCourses(){
+        return finishedCourses;
+    }
+
+    /**
+     * Gets the player's unfinished courses
+     * @return the player's unfinished courses
+     */
+
+    public ArrayList<Course> getUnfinishedCourses(){
+        return unfinishedCourses;
+    }
+
+    /**
+     * Finishes a player's course and increases the player's HP with the course HP
+     * @param course the course to move
+     */
+
+    public void finishCourse(Course course){
+        unfinishedCourses.remove(course);
+        finishedCourses.add(course);
+        hp += course.getHP();
+    }
+
+    /**
+     * Moves a player's finished course to the unfinished courses and removes the player's HP with the course HP
+     * @param course the course to move
+     */
+
+    public void removeFinishedCourse(Course course){
+        finishedCourses.remove(course);
+        unfinishedCourses.add(course);
+        hp -= course.getHP();
+    }
+
+    /**
      * Prints the player's courses
      */
 
     public void printCourses(){
+        System.out.println("HP: " + hp);
         System.out.println("Unfinished Courses:");
         for (Course course : unfinishedCourses) {
-            System.out.println(course.getName());
+            System.out.println(course.getName() + " (" + course.getHP() + "HP)");
         }
         System.out.println("\nFinished Courses:");
         for (Course course : finishedCourses) {
-            System.out.println(course.getName());
+            System.out.println(course.getName() + " (" + course.getHP() + "HP)");
         }
     }
 
