@@ -326,6 +326,15 @@ public class World {
     }
 
     /**
+     * Gets all courses in the world
+     * @return all courses in the world
+     */
+
+    public ArrayList<Course> getCourses(){
+        return courses;
+    }
+
+    /**
      * Gets a string representation the world
      * @return a string representing each room in the world
      */
