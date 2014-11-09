@@ -83,10 +83,7 @@ public class Main{
         while(startCourses.size() < 6){
             startCourses.add(allCourses.remove(0));
         }
-        player = new Player("PLAYER", startCourses);
-
-        //Set the player room
-        player.setRoom(world.randRoom());
+        player = new Player("PLAYER", startCourses, world.randRoom());
         System.out.println("Current room:\n" + player.getRoom());
     }
 

@@ -10,16 +10,17 @@ public class Player extends Person {
     private Room currentRoom;
 
     /**
-     * Creates the player with a name, 60 HP, an empty inventory, a set of finished courses
-     * and no unfinished courses
+     * Creates the player with a name, 60 HP, an empty inventory, a set of finished courses,
+     * no unfinished courses and a start room
      * @param name The name of the player
      */
-    public Player(String name, ArrayList<Course> startCourses){
+    public Player(String name, ArrayList<Course> startCourses, Room startRoom){
         super(name);
         hp = 60;
         inventory           = new Inventory();
         finishedCourses     = startCourses;
         unfinishedCourses   = new ArrayList<>();
+        currentRoom         = startRoom;
     }
 
     /**
