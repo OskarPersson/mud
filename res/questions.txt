@@ -9,7 +9,7 @@ IOOPM;Vad för instrument spelar Elias?;Mandolin;Nyckelharpa;Kontrabas;2
 Hemma hos Rikard 101;Vad finner du vid Rickards skrivbord?;Doritos;Deo;Aromat;2
 Frosted tips 101;Kan man klippa rövhåret hos frisören?;Ja;Nej;Kanske;2
 Kasta med pettan;Hur många hål finns det på en standard discgolfbana?;9;14;18;2
-The evolution of dog;Vilken hundras är sötast?;Golden Retriever;Labrador;Tax;0
+The evolution of dogs;Vilken hundras är sötast?;Golden Retriever;Labrador;Tax;0
 Man vs nature;Vilket djur är farligast för människan?;Spindel;Syrsa;Tiger;0
 Musik, mandelmassa och framtid;Vilken av följande är en kyrkotonart?;Kronisk;Bananisk;Mixolydisk;2
 Miljövetenskap;Vilken färg förknippas ofta med miljö?;Röd;Blå;Grön;2
