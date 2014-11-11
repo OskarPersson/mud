@@ -2,6 +2,7 @@ package com.ioopm;
 
 public class Person {
     private String name;
+    private Room currentRoom;
 
     /**
      * A person with a name
@@ -18,6 +19,24 @@ public class Person {
 
     public String getName(){
         return name;
+    }
+
+    /**
+     * Gets the person's room
+     * @return the room the person is in
+     */
+
+    public Room getRoom(){
+        return currentRoom;
+    }
+
+    /**
+     * Moves the person to a new room
+     * @param room the room to move the person to
+     */
+
+    public void setRoom(Room room){
+        currentRoom = room;
     }
 
     /**

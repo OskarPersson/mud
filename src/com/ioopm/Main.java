@@ -66,8 +66,15 @@ public class Main{
     }
 
     private void gameLoop(){
+        int i = 1;
         while(running) {
             getInput();
+            if (i == 4){
+                world.movePersons();
+                i = 1;
+            }else{
+                i++;
+            }
         }
         scanner.close();
     }

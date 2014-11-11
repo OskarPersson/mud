@@ -39,6 +39,14 @@ public class Room {
     }
 
     /**
+     * Removes the sphinx from the room
+     */
+
+    public void removeSphinx(){
+        sphinx = null;
+    }
+
+    /**
      * Checks if a sphinx exists in the room
      * @return true if a sphinx exists in the room, else false
      */
@@ -75,6 +83,15 @@ public class Room {
     }
 
     /**
+     * Removes a student from the room
+     * @param student the student to remove
+     */
+
+    public void removeStudent(Student student){
+        students.remove(student);
+    }
+
+    /**
      * Gets the students in the room
      * @return the students in the room
      */
@@ -93,8 +110,17 @@ public class Room {
     }
 
     /**
+     * Removes a teacher from the room
+     * @param teacher the teacher to remove
+     */
+
+    public void removeTeacher(Teacher teacher){
+        teachers.remove(teacher);
+    }
+
+    /**
      * Gets the teachers in the room
-     * @return the teachers in the rooom
+     * @return the teachers in the room
      */
 
     public ArrayList<Teacher> getTeachers(){

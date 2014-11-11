@@ -7,7 +7,6 @@ public class Player extends Person {
     private ArrayList<Course> finishedCourses;
     private ArrayList<Course> unfinishedCourses;
     private int hp;
-    private Room currentRoom;
 
     /**
      * Creates the player with a name, 60 HP, an empty inventory, a set of finished courses,
@@ -20,7 +19,7 @@ public class Player extends Person {
         inventory           = new Inventory();
         finishedCourses     = startCourses;
         unfinishedCourses   = new ArrayList<>();
-        currentRoom         = startRoom;
+        setRoom(startRoom);
     }
 
     /**
@@ -31,12 +30,12 @@ public class Player extends Person {
      */
 
     public void go(String direction) {
-        Door requestedDoor = currentRoom.getDoor(direction);
+        Door requestedDoor = getRoom().getDoor(direction);
         if (!(requestedDoor == null)){
             if (!requestedDoor.isLocked()) {
-                setRoom(requestedDoor.otherRoom(currentRoom));
-                System.out.println(currentRoom);
-                currentRoom.askQuestions(this);
+                setRoom(requestedDoor.otherRoom(getRoom()));
+                System.out.println(getRoom());
+                getRoom().askQuestions(this);
             } else {
                 System.out.println("That door is locked!");
             }
@@ -52,9 +51,9 @@ public class Player extends Person {
      */
 
     public void unlock(String direction){
-        if (currentRoom.getDoor(direction) != null){
+        if (getRoom().getDoor(direction) != null){
             if (inventory.useKey()) {
-                currentRoom.getDoor(direction).unlock();
+                getRoom().getDoor(direction).unlock();
             }
         }else{
             System.out.println("There is no door in this direction.");
@@ -67,10 +66,10 @@ public class Player extends Person {
      */
 
     public void pickup(String name){
-        Item item = currentRoom.findItem(name);
+        Item item = getRoom().findItem(name);
         if (item != null) {
             inventory.addItem(item);
-            currentRoom.removeItem(item);
+            getRoom().removeItem(item);
             System.out.println("You picked up " + item.getName());
         }
     }
@@ -85,7 +84,7 @@ public class Player extends Person {
         if (item != null){
             System.out.println("You dropped " + item.getName());
             inventory.removeItem(item);
-            currentRoom.addItem(item);
+            getRoom().addItem(item);
         }
     }
 
@@ -96,7 +95,7 @@ public class Player extends Person {
 
     public void enroll(Course course) {
         if (course != null && !unfinishedCourses.contains(course) && !finishedCourses.contains(course)) {
-            for (Teacher teacher : currentRoom.getTeachers()) {
+            for (Teacher teacher : getRoom().getTeachers()) {
                 if (teacher.getCourse() == course) {
                     System.out.println("Enrolled " + course.getName());
                     unfinishedCourses.add(course);
@@ -111,7 +110,7 @@ public class Player extends Person {
      */
 
     public void talk(String name){
-        Student student = currentRoom.findStudent(name);
+        Student student = getRoom().findStudent(name);
         if (student != null){
             Item itemToTrade = getInventory().findItem(student.getCurrentCourse().getBook().getName());
             if (itemToTrade != null){
@@ -119,8 +118,8 @@ public class Player extends Person {
                 Question question = student.getCurrentCourse().getQuestion();
                 System.out.println("The correct answer to \""+ question.getText() +"\" is \""+ question.getCorrectAnswer() +"\" ");
             }
-        }else if (name.equals("sphinx") && currentRoom.hasSphinx()) {
-            currentRoom.getSphinx().talk();
+        }else if (name.equals("sphinx") && getRoom().hasSphinx()) {
+            getRoom().getSphinx().talk();
         }else{
             System.out.println("The sphinx or any student with the name " + name + " is in this room");
         }
@@ -146,13 +145,13 @@ public class Player extends Person {
      */
 
     public void graduate(){
-        if (hp >= 180 && !unfinishedCourses.isEmpty() && currentRoom.hasSphinx()){
+        if (hp >= 180 && !unfinishedCourses.isEmpty() && getRoom().hasSphinx()){
             System.out.println("You graduated!");
             System.out.println("Finished Courses:");
             for (Course course : finishedCourses) {
                 System.out.println(course.getName());
             }
-        }else if(!currentRoom.hasSphinx()){
+        }else if(!getRoom().hasSphinx()){
             System.out.println("The sphinx is not in this room");
         }else{
             System.out.println("You don't qualify yet, you need 180 HP (you have "+hp+") and no unfinished courses");
@@ -213,28 +212,6 @@ public class Player extends Person {
         for (Course course : finishedCourses) {
             System.out.println(course.getName() + " (" + course.getHP() + "HP)");
         }
-    }
-
-    /**
-     * Sets the room of the player
-     * @param room the new room
-     */
-
-    public void setRoom(Room room){
-        if (room != null) {
-            this.currentRoom = room;
-        }else{
-            System.out.println("You have to be in a room.");
-        }
-    }
-
-    /**
-     * Gets the player's current room
-     * @return current room of the player
-     */
-
-    public Room getRoom(){
-        return currentRoom;
     }
 
     /**

@@ -47,22 +47,28 @@ public class World {
 
     }
     private void initSphinx(){
-        randRoom().addSphinx(new Sphinx());
+        Room room = randRoom();
+        Sphinx sphinx = new Sphinx();
+        room.addSphinx(sphinx);
+        sphinx.setRoom(room);
+
     }
 
     private void initCourses(String filepath){
         try (InputStream inputStream = new FileInputStream(filepath)){
             BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
             String line;
-            while ((line = buffer.readLine()) != null && teachers.size() > 0) {
+            ArrayList<Teacher> teachersCopy = new ArrayList<>(teachers);
+
+            while ((line = buffer.readLine()) != null && teachersCopy.size() > 0) {
                 String[] explodedString = line.split(";", 3);
                 Book courseBook = findBook(explodedString[1]);
                 if (courseBook != null) {
                     Course course = new Course(explodedString[0], courseBook,
                                     Integer.parseInt(explodedString[2]));
-                    int ranIdx = ran.nextInt(teachers.size());
-                    teachers.get(ranIdx).setCourse(course);
-                    teachers.remove(ranIdx);
+                    int ranIdx = ran.nextInt(teachersCopy.size());
+                    teachersCopy.get(ranIdx).setCourse(course);
+                    teachersCopy.remove(ranIdx);
                     courses.add(course);
                 }
             }
@@ -153,7 +159,9 @@ public class World {
         }
 
         for (Teacher teacher : teachers){
-            randRoom().addTeacher(teacher);
+            Room room = randRoom();
+            room.addTeacher(teacher);
+            teacher.setRoom(room);
         }
 
     }
@@ -172,7 +180,9 @@ public class World {
         }
 
         for (Student student : students){
-            randRoom().addStudent(student);
+            Room room = randRoom();
+            room.addStudent(student);
+            student.setRoom(room);
         }
 
     }
@@ -332,6 +342,34 @@ public class World {
 
     public ArrayList<Course> getCourses(){
         return courses;
+    }
+
+    /**
+     * Moves all the persons (except the player) to new random rooms
+     */
+
+    public void movePersons(){
+        Room room;
+        for (Teacher teacher : teachers){
+            room = randRoom();
+            room.addTeacher(teacher);
+            teacher.getRoom().removeTeacher(teacher);
+            teacher.setRoom(room);
+        }
+        for (Student student : students){
+            room = randRoom();
+            room.addStudent(student);
+            student.getRoom().removeStudent(student);
+            student.setRoom(room);
+        }
+        room = randRoom();
+        if (room.hasSphinx()){
+            Room newRoom = randRoom();
+            Sphinx sphinx = room.getSphinx();
+            newRoom.addSphinx(sphinx);
+            sphinx.setRoom(newRoom);
+            room.removeSphinx();
+        }
     }
 
     /**
