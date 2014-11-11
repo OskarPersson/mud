@@ -302,12 +302,12 @@ public class Room {
 
         String teacherString = "\nTeachers: \n";
         for(Teacher t : teachers){
-            teacherString += t.toString() + "\n";
+            teacherString += t.toString() + "\n\n";
         }
 
         String studentString = "\nStudents: \n";
         for(Student s : students){
-            studentString += s.toString() + "\n";
+            studentString += s.toString() + "\n\n";
         }
         String sphinxString = "";
 
@@ -315,6 +315,6 @@ public class Room {
            sphinxString = "\nThe sphinx is in this room";
         }
 
-        return roomDesc + itemString + teacherString + studentString + sphinxString;
+        return roomDesc + itemString + teacherString + studentString + sphinxString + "\n\n----------------\n\n";
     }
 }

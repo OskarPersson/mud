@@ -47,7 +47,7 @@ public class Teacher extends Person {
      */
 
     public String toString(){
-        return "Name: " + super.toString() + "\nCourse: " + ((course == null) ? " none" : course.getName()) + "\n";
+        return super.toString() + "\nCourse: " + ((course == null) ? " none" : course.getName() + " (Book: " + course.getBook().getName() + ")");
     }
 
 }

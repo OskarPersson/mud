@@ -41,6 +41,7 @@ public class Student extends Person{
      */
 
     public String toString(){
-        return "\n" + super.toString() + "\nFinished Course: " + finishedCourse.getName() + "\nCurrent Course: " + currentCourse.getName();
+        return super.toString() + "\nFinished Course: " + finishedCourse.getName() + " (Book: " + finishedCourse.getBook().getName() +")\n" +
+                "Current Course: " + currentCourse.getName() + " (Book: " + currentCourse.getBook().getName() + ")";
     }
 }
