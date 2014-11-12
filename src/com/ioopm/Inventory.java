@@ -61,6 +61,15 @@ public class Inventory {
     }
 
     /**
+     * Checks if the item is in the inventory
+     * @param item the item to check for
+     * @return true if the item is in the inventory, else false
+     */
+    public boolean contains(Item item){
+        return items.contains(item);
+    }
+
+    /**
      * Uses the key and removes it
      * @return true if the key is used, else false
      */
