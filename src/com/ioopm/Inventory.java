@@ -24,6 +24,7 @@ public class Inventory {
         if (capacity - item.getSpace() >= 0) {
             items.add(item);
             capacity -= item.getSpace();
+            System.out.println("You picked up " + item.getName());
         }else{
             System.out.println("Your inventory is full");
         }

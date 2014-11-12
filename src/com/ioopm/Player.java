@@ -70,7 +70,6 @@ public class Player extends Person {
         if (item != null) {
             inventory.addItem(item);
             getRoom().removeItem(item);
-            System.out.println("You picked up " + item.getName());
         }
     }
 
