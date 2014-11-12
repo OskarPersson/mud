@@ -1,5 +1,7 @@
 package com.ioopm;
 
+import java.util.Random;
+
 public class Question {
     private String[] answers;
     private int correctIdx;
@@ -46,11 +48,22 @@ public class Question {
     }
 
     /**
-     * A string representation of the question
-     * @return a string representing the question
+     * Forms the question to the player with 3 possible answers (2 if hasBook is true)
+     * @param hasBook whether the player has the course book
+     * @return the question as a string
      */
 
-    public String toString(){
-        return text + " (1-3)\n#1 " + answers[0] + "\n#2 " + answers[1] + "\n#3 " + answers[2] + "\n";
+    public String ask(boolean hasBook){
+        String[] copy = new String[answers.length];
+        System.arraycopy(answers, 0, copy, 0, answers.length);
+        if (hasBook) {
+            Random rand = new Random();
+            int idxToRemove = correctIdx;
+            while (idxToRemove == correctIdx) {
+                idxToRemove = rand.nextInt(answers.length-1);
+            }
+            copy[idxToRemove] = copy[idxToRemove] + " - the book tells you that this is wrong!";
+        }
+        return text + " (1-3)\n#1 " + copy[0] + "\n#2 " + copy[1] + "\n#3 " + copy[2] + "\n";
     }
 }

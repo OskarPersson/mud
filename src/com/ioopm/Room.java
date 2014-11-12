@@ -144,7 +144,7 @@ public class Room {
             if (player.getUnfinishedCourses().contains(course)){
                 if (ran.nextInt(4) < 3){ //75% chance
                     System.out.print(teacher.getName() + " asks: ");
-                    System.out.println(course.getQuestion());
+                    System.out.println(course.getQuestion().ask(player.getInventory().contains(course.getBook())));
                     System.out.print("Answer #: ");
                     int input = 0;
                     while(input < 1 || input > 3) {
@@ -165,8 +165,8 @@ public class Room {
                 }
             }else if(player.getFinishedCourses().contains(course)){
                 if (ran.nextInt(2) == 0){ //50% chance
-                    System.out.print(teacher.getName() + " asks (50%): ");
-                    System.out.println(course.getQuestion());
+                    System.out.print(teacher.getName() + " asks: ");
+                    System.out.println(course.getQuestion().ask(player.getInventory().contains(course.getBook())));
                     System.out.print("Answer #: ");
                     int input = 0;
                     while(input < 1 || input > 3) {
