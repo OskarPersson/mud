@@ -70,6 +70,6 @@ public class Course {
      */
 
     public String toString(){
-        return "Name: " + name + "\nBook: " + book + "\nHP: " + HP + "\n";
+        return "Name: " + name + " Book: " + book.getName() + " HP: " + HP + "\n";
     }
 }
