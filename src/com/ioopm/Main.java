@@ -70,7 +70,7 @@ public class Main{
         while(running) {
             getInput();
             if (i == 4){
-                world.movePersons();
+                world.movePersons(player);
                 i = 1;
             }else{
                 i++;

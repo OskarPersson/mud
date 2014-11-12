@@ -348,22 +348,26 @@ public class World {
      * Moves all the persons (except the player) to new random rooms
      */
 
-    public void movePersons(){
+    public void movePersons(Player player){
         Room room;
         for (Teacher teacher : teachers){
-            room = randRoom();
-            room.addTeacher(teacher);
-            teacher.getRoom().removeTeacher(teacher);
-            teacher.setRoom(room);
+            if (teacher.getRoom() != player.getRoom()) {
+                room = randRoom();
+                room.addTeacher(teacher);
+                teacher.getRoom().removeTeacher(teacher);
+                teacher.setRoom(room);
+            }
         }
         for (Student student : students){
-            room = randRoom();
-            room.addStudent(student);
-            student.getRoom().removeStudent(student);
-            student.setRoom(room);
+            if (student.getRoom() != player.getRoom()) {
+                room = randRoom();
+                room.addStudent(student);
+                student.getRoom().removeStudent(student);
+                student.setRoom(room);
+            }
         }
         room = randRoom();
-        if (room.hasSphinx()){
+        if (room.hasSphinx() && player.getRoom() != room){
             Room newRoom = randRoom();
             Sphinx sphinx = room.getSphinx();
             newRoom.addSphinx(sphinx);
