@@ -205,11 +205,11 @@ public class Player extends Person {
         System.out.println("HP: " + hp);
         System.out.println("Unfinished Courses:");
         for (Course course : unfinishedCourses) {
-            System.out.println(course.getName() + " (" + course.getHP() + "HP)");
+            System.out.println(course);
         }
         System.out.println("\nFinished Courses:");
         for (Course course : finishedCourses) {
-            System.out.println(course.getName() + " (" + course.getHP() + "HP)");
+            System.out.println(course);
         }
     }
 
