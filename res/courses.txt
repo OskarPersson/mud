@@ -2,14 +2,14 @@ Folklivsforskning 101;Kaffekokning i pumpa av ohärdat glas;10
 Fläskstekning 101;Fläskstekning;5
 Dagens superhjältar;Stålmannen i modern tid;15
 Haskell och du;Spelutveckling i Haskell;10
+Temp 101;Temp Programming;10
+The evolution of dogs;Labrador på medeltiden;10
 Funktionell och disciplinell programmering;Funktionellt, bitte!;20
 Hamstern i hemmet;Hamsterhjulteori;5
-Temp 101;Temp Programming;10
 IOOPM;Redovisning i Java;20
 Hemma hos Rikard 101;Kast med litet bord;15
 Hårfärgning;Frisörteori;10
 Kasta med pettan;DiscusDans;15
-The evolution of dogs;Labrador på medeltiden;10
 Man vs nature;Brottning med hajar;15
 Musik, mandelmassa och framtid;Techno eurodance och hardstyle;5
 Miljövetenskap;Solceller och äpplejuice;10

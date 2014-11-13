@@ -1,7 +1,5 @@
 package com.ioopm;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main{
@@ -82,14 +80,13 @@ public class Main{
     private Main(){
         world  = new World("res/world.txt", "res/books.txt", "res/courses.txt", "res/questions.txt");
 
-        //Get all courses, shuffle the list and set the first 6 as the player's start courses
+        //Get 6 first courses and set as the player's start courses
         ArrayList<Course> allCourses = world.getCourses();
-        Collections.shuffle(allCourses);
         ArrayList<Course> startCourses = new ArrayList<>();
-        Random ran = new Random();
-        while(startCourses.size() < 6){
-            startCourses.add(allCourses.remove(0));
+        for (int i = 0; i < 6; i++) {
+            startCourses.add(allCourses.get(i));
         }
+        
         player = new Player("PLAYER", startCourses, world.randRoom());
         System.out.println("Current room:\n" + player.getRoom());
         player.getRoom().askQuestions(player);

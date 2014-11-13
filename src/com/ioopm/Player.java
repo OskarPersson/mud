@@ -15,7 +15,10 @@ public class Player extends Person {
      */
     public Player(String name, ArrayList<Course> startCourses, Room startRoom){
         super(name);
-        hp = 60;
+        hp = 0;
+        for(Course course : startCourses){
+            hp += course.getHP();
+        }
         inventory           = new Inventory();
         finishedCourses     = startCourses;
         unfinishedCourses   = new ArrayList<>();
