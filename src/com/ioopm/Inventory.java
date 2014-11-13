@@ -18,15 +18,18 @@ public class Inventory {
     /**
      * Adds an item (if it fits) to the inventory
      * @param item the item to add
+     * @return true if item was added, false otherwise.
      */
 
-    public void addItem(Item item){
+    public boolean addItem(Item item){
         if (capacity - item.getSpace() >= 0) {
             items.add(item);
             capacity -= item.getSpace();
             System.out.println("You picked up " + item.getName());
+            return true;
         }else{
             System.out.println("Your inventory is full");
+            return false;
         }
     }
 
@@ -39,7 +42,7 @@ public class Inventory {
         for (Item item : items){
             if (item.equals(itemToRemove)){
                 items.remove(item);
-                capacity -= item.getSpace();
+                capacity += item.getSpace();
                 break;
             }
         }

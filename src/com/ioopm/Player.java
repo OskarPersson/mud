@@ -68,10 +68,13 @@ public class Player extends Person {
     public void pickup(String name){
         Item item = getRoom().findItem(name);
         if (item != null) {
-            inventory.addItem(item);
-            getRoom().removeItem(item);
+            if(inventory.addItem(item)){
+                getRoom().removeItem(item);
+            }
         }
     }
+
+
 
     /**
      * Drops an item and adds it to the room
