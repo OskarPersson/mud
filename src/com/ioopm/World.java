@@ -38,11 +38,11 @@ public class World {
 
         initRooms(roomFilename);
         initNames("res/names.txt");
-        initTeachers(10, 14);
+        initTeachers(16);
         initBooks(bookFilename);
         initCourses(courseFilename);
         initQuestions(questionFilename);
-        initStudents(10, 14);
+        initStudents(12);
         initSphinx();
 
     }
@@ -150,9 +150,7 @@ public class World {
         }
     }
 
-    private void initTeachers(int min, int max){
-        int n_teachers = ran.nextInt(max - min) + min;
-
+    private void initTeachers(int n_teachers){
         while (teachers.size() <= n_teachers){
             int rand = ran.nextInt(names.size());
             teachers.add(new Teacher(names.remove(rand)));
@@ -166,9 +164,7 @@ public class World {
 
     }
 
-    private void initStudents(int min, int max){
-        int n_students = ran.nextInt(max - min) + min;
-
+    private void initStudents(int n_students){
         while (students.size() <= n_students){
             int rand = ran.nextInt(names.size());
             int firstCourseId = ran.nextInt(courses.size());
