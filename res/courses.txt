@@ -7,7 +7,7 @@ Hamstern i hemmet;Hamsterhjulteori;5
 Temp 101;Temp Programming;10
 IOOPM;Redovisning i Java;20
 Hemma hos Rikard 101;Kast med litet bord;15
-Frosted tips 101;Frisörteori;10
+Hårfärgning;Frisörteori;10
 Kasta med pettan;DiscusDans;15
 The evolution of dogs;Labrador på medeltiden;10
 Man vs nature;Brottning med hajar;15

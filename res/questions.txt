@@ -1,4 +1,4 @@
-Folklivsforskning 101;Vilken är den största religion i världen?;Kristendomen;Islam;Hinduismen;0
+Folklivsforskning 101;Vilken är den största religionen i världen?;Kristendomen;Islam;Hinduismen;0
 Fläskstekning 101;Vid vilken värme är ditt kött saftigt och välstekt?;50;70;90;1
 Dagens superhjältar;Vilken superhjälte skapades först?;Stålmannen;Hulken;Läderlappen;0
 Haskell och du;Pattern matching?;Ja;Nej;Kanske;0
@@ -7,7 +7,7 @@ Hamstern i hemmet;Vad äter en hamster;Syrsor;Sallad;Popcorn;1
 Temp 101;Vad är ett acceptabelt variabelnamn;temp;to_be_changed;not_final;0
 IOOPM;Vad för instrument spelar Elias?;Mandolin;Nyckelharpa;Kontrabas;2
 Hemma hos Rikard 101;Vad finner du vid Rickards skrivbord?;Doritos;Deo;Aromat;2
-Frosted tips 101;Kan man klippa rövhåret hos frisören?;Ja;Nej;Kanske;2
+Hårfärgning;Vilket av följande är en hårfärg?;Sandré;Handré;Bandré;0
 Kasta med pettan;Hur många hål finns det på en standard discgolfbana?;9;14;18;2
 The evolution of dogs;Vilken hundras är sötast?;Golden Retriever;Labrador;Tax;0
 Man vs nature;Vilket djur är farligast för människan?;Spindel;Syrsa;Tiger;0
