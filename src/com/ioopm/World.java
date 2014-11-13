@@ -151,7 +151,7 @@ public class World {
     }
 
     private void initTeachers(int n_teachers){
-        while (teachers.size() <= n_teachers){
+        while (teachers.size() < n_teachers){
             int rand = ran.nextInt(names.size());
             teachers.add(new Teacher(names.remove(rand)));
         }
@@ -165,7 +165,7 @@ public class World {
     }
 
     private void initStudents(int n_students){
-        while (students.size() <= n_students){
+        while (students.size() < n_students){
             int rand = ran.nextInt(names.size());
             int firstCourseId = ran.nextInt(courses.size());
             int secondCourseId = ran.nextInt(courses.size());
