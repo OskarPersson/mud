@@ -31,7 +31,7 @@ public class Door {
      */
 
     public void addRoom(Room room){
-        if (!rooms.contains(room)) {
+        if (!rooms.contains(room) && rooms.size() < 2) {
             rooms.add(room);
         }
     }
