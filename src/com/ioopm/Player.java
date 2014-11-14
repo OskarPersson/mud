@@ -115,7 +115,9 @@ public class Player extends Person {
      */
 
     public void talk(String name){
-        Student student = getRoom().findStudent(name);
+        Student student = null;
+        if (!name.equals("sphinx")){student = getRoom().findStudent(name);}
+
         if (student != null){
             Item itemToTrade = getInventory().findItem(student.getCurrentCourse().getBook().getName());
             if (itemToTrade != null){
@@ -150,7 +152,7 @@ public class Player extends Person {
      */
 
     public void graduate(){
-        if (hp >= 180 && !unfinishedCourses.isEmpty() && getRoom().hasSphinx()){
+        if (hp >= 180 &&  unfinishedCourses.isEmpty() && getRoom().hasSphinx()){
             System.out.println("You graduated!");
             System.out.println("Finished Courses:");
             for (Course course : finishedCourses) {

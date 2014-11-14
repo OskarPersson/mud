@@ -23,7 +23,7 @@ public class Sphinx extends Person {
 
     public void talk(){
         int idx = new Random().nextInt(responses.size());
-        System.out.print(responses.get(idx));
+        System.out.println(responses.get(idx));
     }
 
     private void initResponses(){
