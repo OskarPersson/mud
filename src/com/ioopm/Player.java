@@ -152,7 +152,7 @@ public class Player extends Person {
      */
 
     public void graduate(){
-        if (hp >= 180 &&  unfinishedCourses.isEmpty() && getRoom().hasSphinx()){
+        if (hp >= 180 &&  !hasUnfinishedCourses() && getRoom().hasSphinx()){
             System.out.println("You graduated!");
             System.out.println("Finished Courses:");
             for (Course course : finishedCourses) {
