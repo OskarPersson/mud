@@ -21,15 +21,13 @@ public class Inventory<T extends Item> {
      * @return true if item was added, false otherwise.
      */
 
-    public boolean addItem(T item){
-        if (capacity - item.getSpace() >= 0) {
+    public void addItem(T item) throws InventoryFullException{
+        if (capacity - item.getSpace() < 0){
+            throw new InventoryFullException("Inventory full");
+        }else{
             items.add(item);
             capacity -= item.getSpace();
             System.out.println("You picked up " + item.getName());
-            return true;
-        }else{
-            System.out.println("Your inventory is full");
-            return false;
         }
     }
 

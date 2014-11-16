@@ -71,8 +71,11 @@ public class Player extends Person {
     public void pickup(String name){
         Item item = getRoom().findItem(name);
         if (item != null) {
-            if(inventory.addItem(item)){
+            try{
+                inventory.addItem(item);
                 getRoom().removeItem(item);
+            }catch(InventoryFullException e){
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -141,8 +144,12 @@ public class Player extends Person {
     public void trade(Student student){
         Item itemToTrade = this.getInventory().findItem(student.getCurrentCourse().getBook().getName());
         if (itemToTrade != null){
-            inventory.addItem(student.getFinishedCourse().getBook());
-            inventory.removeItem(itemToTrade);
+            try {
+                inventory.removeItem(itemToTrade);
+                inventory.addItem(student.getFinishedCourse().getBook());
+            }catch (InventoryFullException e){
+                System.out.println(e.getMessage());
+            }
         }
     }
 
