@@ -80,6 +80,7 @@ public class World {
 
         } catch (FileNotFoundException e){
             System.out.println(filepath + " not found!");
+            System.exit(0);
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -107,6 +108,7 @@ public class World {
 
         } catch (FileNotFoundException e){
             System.out.println(filepath + " not found!");
+            System.exit(0);
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -131,6 +133,7 @@ public class World {
 
         } catch (FileNotFoundException e){
             System.out.println(filepath + " not found!");
+            System.exit(0);
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -144,7 +147,8 @@ public class World {
                 names.add(line);
             }
         }catch(FileNotFoundException e){
-            System.out.print(filepath + " not found!");
+            System.out.println(filepath + " not found!");
+            System.exit(0);
 
         }catch(IOException e){
             e.printStackTrace();
@@ -273,6 +277,7 @@ public class World {
 
         } catch (FileNotFoundException e){
             System.out.println(filepath + " not found!");
+            System.exit(0);
         } catch (IOException e){
             e.printStackTrace();
         }

@@ -35,7 +35,8 @@ public class Sphinx extends Person {
                 responses.add(line);
             }
         }catch(FileNotFoundException e){
-            System.out.print("res/sphinx.txt not found!");
+            System.out.println("res/sphinx.txt not found!");
+            System.exit(0);
 
         }catch(IOException e){
             e.printStackTrace();
