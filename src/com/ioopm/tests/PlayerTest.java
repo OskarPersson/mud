@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class PlayerTest {
-    World world = new World("res/world.txt", "res/books.txt", "res/courses.txt", "res/questions.txt");
+    World world = new World("res/world.txt", "res/names.txt", "res/books.txt", "res/courses.txt", "res/questions.txt");
     Room room = world.findRoom("Corridor 2");
     Course course = world.findCourse("IOOPM");
     Book book = new Book("Funktionellt, bitte!", "Tjark Weber", 1992);

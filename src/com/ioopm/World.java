@@ -20,12 +20,13 @@ public class World {
     /**
      * Creates a world with rooms, persons and items
      * @param roomFilename Path to the .txt file containing the rooms
+     * @param nameFilename Path to the .txt file containing the names
      * @param bookFilename Path to the .txt file containing the books
      * @param courseFilename Path to the .txt file containing the courses
      * @param questionFilename Path to the .txt file containing the questions
      */
 
-    public World(String roomFilename, String bookFilename, String courseFilename, String questionFilename){
+    public World(String roomFilename, String nameFilename, String bookFilename, String courseFilename, String questionFilename){
         rooms     = new ArrayList<>();
         names     = new ArrayList<>();
         teachers  = new ArrayList<>();
@@ -37,7 +38,7 @@ public class World {
         ran       = new Random();
 
         initRooms(roomFilename);
-        initNames("res/names.txt");
+        initNames(nameFilename);
         initTeachers(16);
         initBooks(bookFilename);
         initCourses(courseFilename);
@@ -136,7 +137,7 @@ public class World {
     }
 
     private void initNames(String filepath){
-        try (InputStream inputStream = new FileInputStream("res/names.txt")){
+        try (InputStream inputStream = new FileInputStream(filepath)){
             BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
             String line;
             while ((line = buffer.readLine()) != null) {

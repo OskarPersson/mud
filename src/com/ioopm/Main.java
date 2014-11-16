@@ -78,7 +78,7 @@ public class Main{
     }
 
     private Main(){
-        world  = new World("res/world.txt", "res/books.txt", "res/courses.txt", "res/questions.txt");
+        world  = new World("res/world.txt", "res/names.txt", "res/books.txt", "res/courses.txt", "res/questions.txt");
 
         //Get 6 first courses and set as the player's start courses
         ArrayList<Course> allCourses = world.getCourses();
