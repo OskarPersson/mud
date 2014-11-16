@@ -2,9 +2,9 @@ package com.ioopm;
 
 import java.util.ArrayList;
 
-public class Inventory {
+public class Inventory<T extends Item> {
     private int capacity;
-    private ArrayList<Item> items;
+    private ArrayList<T> items;
 
     /**
      * Creates an empty inventory with a capacity of 10
@@ -21,7 +21,7 @@ public class Inventory {
      * @return true if item was added, false otherwise.
      */
 
-    public boolean addItem(Item item){
+    public boolean addItem(T item){
         if (capacity - item.getSpace() >= 0) {
             items.add(item);
             capacity -= item.getSpace();
@@ -38,8 +38,8 @@ public class Inventory {
      * @param itemToRemove the item to remove
      */
 
-    public void removeItem(Item itemToRemove){
-        for (Item item : items){
+    public void removeItem(T itemToRemove){
+        for (T item : items){
             if (item.equals(itemToRemove)){
                 items.remove(item);
                 capacity += item.getSpace();
@@ -54,8 +54,8 @@ public class Inventory {
      * @return the item with the given name, null if it doesn't exist
      */
 
-    public Item findItem(String name){
-        for (Item item : items){
+    public T findItem(String name){
+        for (T item : items){
             if (item.getName().toLowerCase().equals(name.toLowerCase())){
                 return item;
             }
@@ -68,7 +68,7 @@ public class Inventory {
      * @param item the item to check for
      * @return true if the item is in the inventory, else false
      */
-    public boolean contains(Item item){
+    public boolean contains(T item){
         return items.contains(item);
     }
 
@@ -78,7 +78,7 @@ public class Inventory {
      */
     
     public boolean useKey(){
-        for (Item item : items){
+        for (T item : items){
             if (item instanceof Key){
                 System.out.println("Unlocked door");
                 removeItem(item);
@@ -97,7 +97,7 @@ public class Inventory {
     public String toString(){
         String result = "\n";
         if (items.size() != 0) {
-            for (Item item : items) {
+            for (T item : items) {
                 result = result.concat(item + "\n");
             }
         }else{
