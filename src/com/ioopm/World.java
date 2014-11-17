@@ -347,7 +347,7 @@ public class World {
     }
 
     /**
-     * Moves all the persons (except the player) to new random rooms
+     * Moves all the persons (except the player and persons in the same room as the player) to new random rooms
      */
 
     public void movePersons(Player player){
