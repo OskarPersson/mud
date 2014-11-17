@@ -3,7 +3,7 @@ package com.ioopm;
 import java.util.ArrayList;
 
 public class Player extends Person {
-    private Inventory inventory;
+    private Inventory<Item> inventory;
     private ArrayList<Course> finishedCourses;
     private ArrayList<Course> unfinishedCourses;
     private int hp;
@@ -19,7 +19,7 @@ public class Player extends Person {
         for(Course course : startCourses){
             hp += course.getHP();
         }
-        inventory           = new Inventory();
+        inventory           = new Inventory<>();
         finishedCourses     = startCourses;
         unfinishedCourses   = new ArrayList<>();
         setRoom(startRoom);
