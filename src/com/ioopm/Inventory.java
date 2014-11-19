@@ -37,13 +37,7 @@ public class Inventory<T extends Item> {
      */
 
     public void removeItem(T itemToRemove){
-        for (T item : items){
-            if (item.equals(itemToRemove)){
-                items.remove(item);
-                capacity += item.getSpace();
-                break;
-            }
-        }
+        items.remove(itemToRemove);
     }
 
     /**
