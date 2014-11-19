@@ -24,6 +24,8 @@ public class Main{
                 player.printCourses();
             } else if (currentInput.equals("inventory")) {
                 System.out.println(player.getInventory());
+            } else if (currentInput.equals("inventory log")) {
+                player.getInventory().printLog();
             } else if (currentInput.startsWith("pick up")) {
                 String rest = currentInput.substring(8);
                 player.pickup(rest);

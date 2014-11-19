@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Inventory <T extends Item> implements ItemContainer <T>{
     private int capacity;
     private ArrayList<T> items;
+    private Log log;
 
     /**
      * Creates an empty inventory with a capacity of 10
@@ -13,6 +14,7 @@ public class Inventory <T extends Item> implements ItemContainer <T>{
     public Inventory(){
         items = new ArrayList<>();
         capacity = 10;
+        log = new Log();
     }
 
     /**
@@ -28,6 +30,7 @@ public class Inventory <T extends Item> implements ItemContainer <T>{
             items.add(item);
             capacity -= item.getSpace();
             System.out.println("You picked up " + item.getName());
+            log.addMessage(item.getName() + " added");
         }
     }
 
@@ -37,7 +40,10 @@ public class Inventory <T extends Item> implements ItemContainer <T>{
      */
 
     public void removeItem(T item){
-        items.remove(item);
+        if (items.contains(item)) {
+            items.remove(item);
+            log.addMessage(item.getName() + " removed");
+        }
     }
 
     /**
@@ -98,6 +104,10 @@ public class Inventory <T extends Item> implements ItemContainer <T>{
         return result;
     }
 
+    public void printLog(){
+        System.out.println(log);
+    }
+
     public static class InventoryFullException extends Exception{
 
         public InventoryFullException(){
@@ -106,6 +116,26 @@ public class Inventory <T extends Item> implements ItemContainer <T>{
 
         public InventoryFullException(String message){
             super(message);
+        }
+    }
+
+    private class Log{
+        ArrayList<String> msgs;
+
+        public Log(){
+            msgs = new ArrayList<>();
+        }
+
+        public void addMessage(String msg){
+            msgs.add(msg);
+        }
+
+        public String toString(){
+            String result = "";
+            for (int i = 0; i < msgs.size(); i++) {
+                result += "#" + (i+1) + ": " + msgs.get(i) + "\n";
+            }
+            return result;
         }
     }
 }
