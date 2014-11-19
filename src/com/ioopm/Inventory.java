@@ -2,7 +2,7 @@ package com.ioopm;
 
 import java.util.ArrayList;
 
-public class Inventory<T extends Item> {
+public class Inventory <T extends Item> implements ItemContainer <T>{
     private int capacity;
     private ArrayList<T> items;
 
@@ -33,11 +33,11 @@ public class Inventory<T extends Item> {
 
     /**
      * Removes an item from the inventory
-     * @param itemToRemove the item to remove
+     * @param item the item to remove
      */
 
-    public void removeItem(T itemToRemove){
-        items.remove(itemToRemove);
+    public void removeItem(T item){
+        items.remove(item);
     }
 
     /**

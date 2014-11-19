@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Room {
+public class Room implements ItemContainer{
     private String name;
     private Door NORTH;
     private Door SOUTH;
