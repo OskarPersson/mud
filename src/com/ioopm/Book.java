@@ -1,8 +1,6 @@
 package com.ioopm;
 
-public class Book implements Item{
-    private String name;
-    private int inventorySpace;
+public class Book extends Item{
     private String author;
     private int year;
 
@@ -14,7 +12,7 @@ public class Book implements Item{
      */
 
     public Book(String name, String author, int year){
-        this.name = name;
+        super(name);
         this.author = author;
         this.year = year;
     }
@@ -28,26 +26,9 @@ public class Book implements Item{
      */
 
     public Book(String name, String author, int year, int space){
-        this.name = name;
-        this.inventorySpace = space;
+        super(space, name);
         this.author = author;
         this.year = year;
-    }
-
-    public int getSpace(){
-        return inventorySpace;
-    }
-
-    public void setSpace(int space){
-        inventorySpace = space;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public boolean equals(Item item){
-        return item.getName().toLowerCase().equals(name);
     }
 
     /**
