@@ -97,4 +97,15 @@ public class Inventory<T extends Item> {
         }
         return result;
     }
+
+    public static class InventoryFullException extends Exception{
+
+        public InventoryFullException(){
+            super();
+        }
+
+        public InventoryFullException(String message){
+            super(message);
+        }
+    }
 }

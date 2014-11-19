@@ -74,7 +74,7 @@ public class Player extends Person {
             try{
                 inventory.addItem(item);
                 getRoom().removeItem(item);
-            }catch(InventoryFullException e){
+            }catch(Inventory.InventoryFullException e){
                 System.out.println(e.getMessage());
             }
         }
@@ -147,7 +147,7 @@ public class Player extends Person {
             try {
                 inventory.removeItem(itemToTrade);
                 inventory.addItem(student.getFinishedCourse().getBook());
-            }catch (InventoryFullException e){
+            }catch (Inventory.InventoryFullException e){
                 System.out.println(e.getMessage());
             }
         }
