@@ -27,11 +27,4 @@ public class InventoryTest {
         inventory.addItem(key);
         assertEquals(inventory.findItem("key") != null, true);
     }
-
-    @Test
-    public void testUseKey() throws Exception {
-        inventory.addItem(key);
-        inventory.useKey();
-        assertEquals(inventory.contains(key), false);
-    }
 }

@@ -55,8 +55,13 @@ public class Player extends Person {
 
     public void unlock(String direction){
         if (getRoom().getDoor(direction) != null){
-            if (inventory.useKey()) {
+            Item key = inventory.findItem("key");
+            if (key instanceof Key) {
                 getRoom().getDoor(direction).unlock();
+                inventory.removeItem(key);
+                System.out.println("Unlocked door");
+            }else{
+                System.out.println("You have no keys");
             }
         }else{
             System.out.println("There is no door in this direction.");

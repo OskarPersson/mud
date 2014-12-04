@@ -70,22 +70,6 @@ public class Inventory <T extends Item> implements ItemContainer <T>{
         return items.contains(item);
     }
 
-    /**
-     * Uses the key and removes it
-     * @return true if the key is used, else false
-     */
-    
-    public boolean useKey(){
-        for (T item : items){
-            if (item instanceof Key){
-                System.out.println("Unlocked door");
-                removeItem(item);
-                return true;
-            }
-        }
-        System.out.println("You have no keys");
-        return false;
-    }
 
     /**
      * Lists the items in the inventory
