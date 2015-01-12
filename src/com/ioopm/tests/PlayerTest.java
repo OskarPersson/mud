@@ -1,10 +1,11 @@
-package com.ioopm;
+package com.ioopm.tests;
 
+import com.ioopm.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class PlayerTest {
     World world = new World("res/world.txt", "res/names.txt", "res/books.txt", "res/courses.txt", "res/questions.txt");

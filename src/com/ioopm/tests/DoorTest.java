@@ -1,5 +1,7 @@
-package com.ioopm;
+package com.ioopm.tests;
 
+import com.ioopm.Door;
+import com.ioopm.Room;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
